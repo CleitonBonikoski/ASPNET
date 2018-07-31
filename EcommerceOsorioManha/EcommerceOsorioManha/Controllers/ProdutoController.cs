@@ -62,8 +62,7 @@ namespace EcommerceOsorioManha.Controllers
 
         public ActionResult AlterarProduto(int? id)
         {
-            Produto ProdutoAlteracao = contexto.Produtos.Find(id);
-            ViewBag.ProdutoAlteracao = ProdutoAlteracao;
+            ViewBag.ProdutoAlteracao = contexto.Produtos.Find(id);
             return View();
         }
 

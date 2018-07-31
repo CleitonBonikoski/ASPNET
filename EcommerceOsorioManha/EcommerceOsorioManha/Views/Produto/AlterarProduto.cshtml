@@ -1,7 +1,8 @@
-﻿
+﻿@using EcommerceOsorioManha.Models;
+
 @{
     Layout = null;
-    EcommerceOsorioManha.Models.Produto produto = ViewBag.ProdutoAlteracao;
+    Produto produto = ViewBag.ProdutoAlteracao;
 }
 
 <!DOCTYPE html>
@@ -14,35 +15,25 @@
 <body>
     <h1>Alterar Produto</h1>
     <div>
-        <table>
-            
-            @if (produto != null)
+            @using (Html.BeginForm())
             {
-                <tr>
-                    <th>  Nome   </th>
-                    <th>  Descrição   </th>
-                    <th>  Preço   </th>
-                    <th>  Categoria   </th>
-                </tr>
-                <tr>
-                    <td>@produto.Nome</td>
-                    <td>@produto.Descricao</td>
-                    <td>@produto.Preco</td>
-                    <td>@produto.Categoria</td>
-                </tr>
-            }
-            else
-            {
-                <h2> Produto Inacessível</h2>
-            }
+                <fieldset>
+                    @Html.Label("Nome Do Produto")
+                    @Html.TextBox("txtNome", produto.Nome)<br />
 
+                    @Html.Label("Descrição")
+                    @Html.TextBox("txtDescricao", produto.Descricao)<br />
 
+                    @Html.Label("Preço")
+                    @Html.TextBox("txtPreco", produto.Preco)<br />
 
+                    @Html.Label("Categoria")
+                    @Html.TextBox("txtCategoria", produto.Categoria)<br />
 
-
-
-        </table>
+                    <input type="submit" value="Salvar" />
+                </fieldset>
+            }       
+       
     </div>
-
 </body>
 </html>
