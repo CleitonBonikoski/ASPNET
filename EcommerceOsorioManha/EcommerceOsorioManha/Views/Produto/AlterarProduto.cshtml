@@ -19,6 +19,10 @@
             {
                 <fieldset>
                     @Html.Hidden("TxtId", produto.ProdutoId)
+
+                    @Html.Label("ID Do Produto")
+                    @Html.TextBox("txtNome", produto.ProdutoId, new { @disabled = ""})<br />
+
                     @Html.Label("Nome Do Produto")
                     @Html.TextBox("txtNome", produto.Nome)<br />
 
