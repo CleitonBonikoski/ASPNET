@@ -39,6 +39,16 @@ namespace EcommerceOsorioManha.Controllers
 
         }
 
+        public ActionResult RemoverProduto(int? id)
+        {
+            ViewBag.ProdutoRemover = contexto.Produtos.Where(p => p.ProdutoId == id).FirstOrDefault();
+            return View();
+        }
+
+        public ActionResult AlterarProduto(int? id)
+        {
+            return View();
+        }
 
 
     }
