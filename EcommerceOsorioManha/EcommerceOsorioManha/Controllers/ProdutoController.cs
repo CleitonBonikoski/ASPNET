@@ -66,6 +66,23 @@ namespace EcommerceOsorioManha.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AlterarProduto(int TxtId, string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
+        {
+            Produto produto = contexto.Produtos.Find(TxtId);
+
+            produto.ProdutoId = TxtId;
+            produto.Nome = txtNome;
+            produto.Descricao = txtDescricao;
+            produto.Preco = Convert.ToDouble(txtPreco);
+            produto.Categoria = txtCategoria;
+            
+
+            contexto.Entry(produto).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
+            return RedirectToAction("Index", "Produto");
+        }
+
 
     }
 }
