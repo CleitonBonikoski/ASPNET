@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CadastrarProduto</title>
+</head>
+<body>
+    <h1>CadastrarProduto</h1>
+    <div> 
+        @using (Html.BeginForm()) { 
+            <fieldset>
+                @Html.Label("Nome Do Produto")
+                @Html.TextBox("txtNome")<br />
+
+                @Html.Label("Descrição")
+                @Html.TextBox("txtDescricao")<br />
+
+                @Html.Label("Preço")
+                @Html.TextBox("txtPreco")<br />
+
+                @Html.Label("Categoria")
+                @Html.TextBox("txtCategoria")<br />
+
+                <input type="submit" value="Cadastrar" />
+            </fieldset>
+      }
+    </div>
+</body>
+</html>

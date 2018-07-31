@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+
+    DateTime data = ViewBag.Data;
+    List<EcommerceOsorioManha.Models.Produto> produtos = ViewBag.Produtos;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Gerenciamento de Produtos</title>
+</head>
+<body>
+    <h1>Gerenciamento de Produtos</h1>
+
+    @*<a href="~/Views/Produto/Cadastra"> Cadastrar Produto </a>*@
+
+    @* Link em MVC Razor *@
+
+    @data <br>
+
+    @Html.ActionLink("Cadastrar Produto","CadastrarProduto", "Produto")
+
+    <div>
+        <table>
+            <tr>
+                <th>Nome  </th>
+                <th>Descrição  </th>
+                <th>Preço  </th>
+                <th>Categoria  </th>
+            </tr>
+            @foreach (EcommerceOsorioManha.Models.Produto ProdutoCadastrado in produtos)
+            {
+                <tr>
+                    <td>@ProdutoCadastrado.Nome</td>
+                    <td>@ProdutoCadastrado.Descricao</td>
+                    <td>@ProdutoCadastrado.Preco</td>
+                    <td>@ProdutoCadastrado.Categoria</td>
+                </tr>
+                
+                
+            }
+        </table>
+    </div>
+
+</body>
+</html>
