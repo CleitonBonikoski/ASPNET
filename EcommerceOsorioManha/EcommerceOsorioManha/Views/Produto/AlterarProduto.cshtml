@@ -1,7 +1,7 @@
 ﻿
 @{
     Layout = null;
-    EcommerceOsorioManha.Models.Produto produto = ViewBag.ProdutoRemover;
+    EcommerceOsorioManha.Models.Produto produto = ViewBag.ProdutoAlteracao;
 }
 
 <!DOCTYPE html>
@@ -9,20 +9,21 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>RemoverProduto</title>
+    <title>AlterarProduto</title>
 </head>
 <body>
-    <h1>Remover Produto</h1>
+    <h1>Alterar Produto</h1>
     <div>
         <table>
-            <tr>
-                <th>  Nome   </th>
-                <th>  Descrição   </th>
-                <th>  Preço   </th>
-                <th>  Categoria   </th>
-            </tr>
+            
             @if (produto != null)
             {
+                <tr>
+                    <th>  Nome   </th>
+                    <th>  Descrição   </th>
+                    <th>  Preço   </th>
+                    <th>  Categoria   </th>
+                </tr>
                 <tr>
                     <td>@produto.Nome</td>
                     <td>@produto.Descricao</td>
@@ -30,8 +31,14 @@
                     <td>@produto.Categoria</td>
                 </tr>
             }
+            else
+            {
+                <h2> Produto Inacessível</h2>
+            }
 
-            
+
+
+
 
 
         </table>

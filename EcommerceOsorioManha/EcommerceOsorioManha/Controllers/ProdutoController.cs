@@ -22,6 +22,7 @@ namespace EcommerceOsorioManha.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult CadastrarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
         {
@@ -39,14 +40,30 @@ namespace EcommerceOsorioManha.Controllers
 
         }
 
-        public ActionResult RemoverProduto(int? id)
+        public ActionResult RemoverProduto(int? id )
         {
-            ViewBag.ProdutoRemover = contexto.Produtos.Where(p => p.ProdutoId == id).FirstOrDefault();
-            return View();
+            Produto ProdutoRemover = contexto.Produtos.Where(p => p.ProdutoId == id).FirstOrDefault();
+            
+            if (ProdutoRemover != null)
+            {
+                try
+                {
+                    contexto.Produtos.Remove(ProdutoRemover);
+                    contexto.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                }
+
+            }
+            return RedirectToAction("Index", "Produto");
         }
 
         public ActionResult AlterarProduto(int? id)
         {
+            Produto ProdutoAlteracao = contexto.Produtos.Find(id);
+            ViewBag.ProdutoAlteracao = ProdutoAlteracao;
             return View();
         }
 

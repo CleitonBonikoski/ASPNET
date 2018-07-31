@@ -151,7 +151,7 @@
     </Content>
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Produto\CadastrarProduto.cshtml" />
-    <Content Include="Views\Produto\RemoverProduto.cshtml" />
+    <Content Include="Views\Produto\AlterarProduto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
