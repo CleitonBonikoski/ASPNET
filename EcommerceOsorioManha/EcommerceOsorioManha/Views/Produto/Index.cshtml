@@ -1,70 +1,46 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
 
     DateTime data = ViewBag.Data;
     List<EcommerceOsorioManha.Models.Produto> produtos = ViewBag.Produtos;
 }
+<div>
+    <h2>Gerenciamento de Produtos</h2>
 
-<!DOCTYPE html>
+    @*<a href="~/Views/Produto/Cadastra"> Cadastrar Produto </a>*@
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <title>Gerenciamento de Produtos</title>
-</head>
-<body>
+    @* Link em MVC Razor *@
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-       @Html.ActionLink("Ecommerce - UP", "Index", "Produto",null, new { @class="navbar-brand" })
+    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
 
-    </nav>
+    <table class="table table-hover table-striped" style="margin-top:30px">
 
-    <div id="Content" class="container" style="margin-top:30px">
-        <h2>Gerenciamento de Produtos</h2>
+        <tr>
+            <th>Nome  </th>
+            <th>Descrição  </th>
+            <th>Preço  </th>
+            <th>Categoria  </th>
+            <th></th>
+            <th></th>
+        </tr>
 
-        @*<a href="~/Views/Produto/Cadastra"> Cadastrar Produto </a>*@
-
-        @* Link em MVC Razor *@
-
-        @data <br>
-
-        @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
-
-        <table>
-            <tr>
-                <th>Nome  </th>
-                <th>Descrição  </th>
-                <th>Preço  </th>
-                <th>Categoria  </th>
-            </tr>
-            @if (produtos != null)
+        @if (produtos != null)
             {
                 foreach (EcommerceOsorioManha.Models.Produto ProdutoCadastrado in produtos)
                 {
-                    <tr>
-                        <td>@ProdutoCadastrado.Nome</td>
-                        <td>@ProdutoCadastrado.Descricao</td>
-                        <td>@ProdutoCadastrado.Preco</td>
-                        <td>@ProdutoCadastrado.Categoria</td>
-                        <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = ProdutoCadastrado.ProdutoId }, null)</td>
-                        <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { Id = ProdutoCadastrado.ProdutoId }, null)</td>
-                    </tr>
-
-                }
-
+                <tr>
+                    <td>@ProdutoCadastrado.Nome</td>
+                    <td>@ProdutoCadastrado.Descricao</td>
+                    <td>@ProdutoCadastrado.Preco</td>
+                    <td>@ProdutoCadastrado.Categoria</td>
+                    <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = ProdutoCadastrado.ProdutoId }, null)</td>
+                    <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { Id = ProdutoCadastrado.ProdutoId }, null)</td>
+                </tr>
             }
+        }
 
-        </table>
-    </div>
+        <p> Dados Atualizados às: <b>@data </b><br></p>
 
+    </table>
+</div>
 
-    <footer style="text-align:center; margin-top:100px">
-        <hr />
-        <p>&copy; @DateTime.Now.Year - Desenvolvido por Cleiton</p>
-
-    </footer>
-
-</body>
-</html>
