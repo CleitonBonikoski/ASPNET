@@ -1,4 +1,5 @@
-﻿using EcommerceOsorioManha.Models;
+﻿using EcommerceOsorioManha.DAO;
+using EcommerceOsorioManha.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class ProdutoController : Controller
     {
-        Contexto contexto = new Contexto();
+        
 
         // GET: Produto
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = contexto.Produtos.ToList();
+            ViewBag.Produtos = ProdutoDAO.RetornarProdutos();
             return View();
         }
         public ActionResult CadastrarProduto()
@@ -34,52 +35,41 @@ namespace EcommerceOsorioManha.Controllers
                 Categoria = txtCategoria
             };
 
-            contexto.Produtos.Add(produto);
-            contexto.SaveChanges();
+            ProdutoDAO.SalvarProduto(produto);
+
             return RedirectToAction("Index","Produto");
 
         }
 
-        public ActionResult RemoverProduto(int? id )
+        public ActionResult RemoverProduto(int? Id)
         {
-            Produto ProdutoRemover = contexto.Produtos.Where(p => p.ProdutoId == id).FirstOrDefault();
-            
-            if (ProdutoRemover != null)
-            {
-                try
-                {
-                    contexto.Produtos.Remove(ProdutoRemover);
-                    contexto.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                }
-
-            }
+            ProdutoDAO.RemoverProduto(Id);
             return RedirectToAction("Index", "Produto");
         }
 
         public ActionResult AlterarProduto(int? id)
         {
-            ViewBag.ProdutoAlteracao = contexto.Produtos.Find(id);
+            ViewBag.ProdutoAlteracao = ProdutoDAO.BuscarProdutoPorId(id);
             return View();
         }
 
         [HttpPost]
         public ActionResult AlterarProduto(int TxtId, string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
         {
-            Produto produto = contexto.Produtos.Find(TxtId);
+            Produto produto = ProdutoDAO.BuscarProdutoPorId(TxtId);
+
+            #region Atualiza o Produto
 
             produto.ProdutoId = TxtId;
             produto.Nome = txtNome;
             produto.Descricao = txtDescricao;
             produto.Preco = Convert.ToDouble(txtPreco);
             produto.Categoria = txtCategoria;
-            
 
-            contexto.Entry(produto).State = System.Data.Entity.EntityState.Modified;
-            contexto.SaveChanges();
+            #endregion  
+
+            ProdutoDAO.AlterarProduto(produto);
+
             return RedirectToAction("Index", "Produto");
         }
 
