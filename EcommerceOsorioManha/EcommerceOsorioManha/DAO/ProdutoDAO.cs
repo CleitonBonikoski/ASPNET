@@ -18,8 +18,7 @@ namespace EcommerceOsorioManha.DAO
             }
             catch (Exception)
             {
-
-                throw;
+                return null;
             }
         }
 
@@ -32,8 +31,6 @@ namespace EcommerceOsorioManha.DAO
             }
             catch (Exception)
             {
-
-                throw;
             }            
         }
 
@@ -45,8 +42,7 @@ namespace EcommerceOsorioManha.DAO
             }
             catch (Exception)
             {
-
-                throw;
+                return null;
             }           
         }
 
@@ -59,8 +55,6 @@ namespace EcommerceOsorioManha.DAO
             }
             catch (Exception)
             {
-
-                throw;
             }          
 
         }
@@ -74,8 +68,6 @@ namespace EcommerceOsorioManha.DAO
             }
             catch (Exception)
             {
-
-                throw;
             }
             
         }
