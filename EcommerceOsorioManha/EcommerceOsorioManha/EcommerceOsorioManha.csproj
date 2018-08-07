@@ -136,9 +136,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807271351409_CriarBanco.cs" />
-    <Compile Include="Migrations\201807271351409_CriarBanco.Designer.cs">
-      <DependentUpon>201807271351409_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808071236241_CriarBanco.cs" />
+    <Compile Include="Migrations\201808071236241_CriarBanco.Designer.cs">
+      <DependentUpon>201808071236241_CriarBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contexto.cs" />
@@ -167,8 +167,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807271351409_CriarBanco.resx">
-      <DependentUpon>201807271351409_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808071236241_CriarBanco.resx">
+      <DependentUpon>201808071236241_CriarBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

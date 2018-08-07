@@ -40,26 +40,24 @@ namespace EcommerceOsorioManha.Controllers
 
         public ActionResult AlterarProduto(int? id)
         {
-            ViewBag.ProdutoAlteracao = ProdutoDAO.BuscarProdutoPorId(id);
-            return View();
+            return View(ProdutoDAO.BuscarProdutoPorId(id));
         }
 
         [HttpPost]
-        public ActionResult AlterarProduto(int TxtId, string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
+        public ActionResult AlterarProduto(Produto produtoAlterado)
         {
-            Produto produto = ProdutoDAO.BuscarProdutoPorId(TxtId);
+            Produto produtoOriginal = ProdutoDAO.BuscarProdutoPorId(produtoAlterado.ProdutoId);
 
             #region Atualiza o Produto
-
-            produto.ProdutoId = TxtId;
-            produto.Nome = txtNome;
-            produto.Descricao = txtDescricao;
-            produto.Preco = Convert.ToDouble(txtPreco);
-            produto.Categoria = txtCategoria;
+            
+            produtoOriginal.Nome = produtoAlterado.Nome;
+            produtoOriginal.Descricao = produtoAlterado.Descricao;
+            produtoOriginal.Preco = produtoAlterado.Preco;
+            produtoOriginal.Categoria = produtoAlterado.Categoria;
 
             #endregion  
 
-            ProdutoDAO.AlterarProduto(produto);
+            ProdutoDAO.AlterarProduto(produtoOriginal);
 
             return RedirectToAction("Index", "Produto");
         }
