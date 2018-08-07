@@ -7,26 +7,29 @@
             <legend>CadastrarProduto</legend>
             <div class="form-group">
                 @*or form-inline*@
-                @Html.Label("Nome Do Produto", new { @class = "control-label col-sm-2" })
+                @Html.LabelFor(model => model.Nome, new { @class = "control-label col-sm-2" })
                 <div class="col-sm-10">
+                    @Html.ValidationMessageFor(model => model.Nome, null, new { @class = "text-danger" })
                     @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", @placeholder = "Nome do Produto" })<br />
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Descrição", new { @class = "control-label col-sm-2" })
-                <div class="col-sm-10">
-                    @Html.TextBoxFor(model => model.Descricao,new { @class = "form-control", @placeholder = "Descrição do Produto" })<br />
+                @Html.LabelFor(model => model.Descricao, new { @class = "control-label col-sm-2" })
+                <div class="col-sm-10
+                     @Html.ValidationMessageFor(model => model.Descricao, null, new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control", @placeholder = "Descrição do Produto" })<br />
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Preço", new { @class = "control-label col-sm-2" })
+                @Html.LabelFor(model => model.Preco, new { @class = "control-label col-sm-2" })
                 <div class="col-sm-10">
+                    @Html.ValidationMessageFor(model => model.Preco, null, new { @class = "text-danger" })
                     @Html.TextBoxFor(model => model.Preco, new { @class = "form-control", @placeholder = "Preço do Produto" })<br />
                 </div>
             </div><div class="form-group">
-                @Html.Label("Categoria", new { @class = "control-label col-sm-2" })
-
+                @Html.LabelFor(model => model.Categoria, new { @class = "control-label col-sm-2" })
                 <div class="col-sm-10">
+                    @Html.ValidationMessageFor(model => model.Categoria, null, new { @class = "text-danger" })
                     @Html.TextBoxFor(model => model.Categoria, new { @class = "form-control", @placeholder = "Categoria do Produto" })<br />
                 </div>
             </div>

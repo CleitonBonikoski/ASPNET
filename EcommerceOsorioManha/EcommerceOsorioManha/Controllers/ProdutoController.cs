@@ -10,8 +10,6 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class ProdutoController : Controller
     {
-        
-
         // GET: Produto
         public ActionResult Index()
         {
@@ -26,9 +24,17 @@ namespace EcommerceOsorioManha.Controllers
         [HttpPost]
         public ActionResult CadastrarProduto(Produto produto)
         {
-            ProdutoDAO.SalvarProduto(produto);
+            if (ModelState.IsValid)
+            {
+                ProdutoDAO.SalvarProduto(produto);
 
-            return RedirectToAction("Index","Produto");
+                return RedirectToAction("Index", "Produto");
+            }
+            else
+            {
+                return View(produto);
+            }
+            
 
         }
 
