@@ -1,8 +1,9 @@
-﻿@{
-    Layout = "~/Views/Shared/Layout.cshtml";
+﻿@using EcommerceOsorioManha.Models
+@model List<Produto>
+
+@{
 
     DateTime data = ViewBag.Data;
-    List<EcommerceOsorioManha.Models.Produto> produtos = ViewBag.Produtos;
 }
 <div>
     <h2>Gerenciamento de Produtos</h2>
@@ -24,9 +25,9 @@
             <th></th>
         </tr>
 
-        @if (produtos != null)
+        @if (Model != null)
             {
-                foreach (EcommerceOsorioManha.Models.Produto ProdutoCadastrado in produtos)
+                foreach (Produto ProdutoCadastrado in Model)
                 {
                 <tr>
                     <td>@ProdutoCadastrado.Nome</td>

@@ -16,8 +16,7 @@ namespace EcommerceOsorioManha.Controllers
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = ProdutoDAO.RetornarProdutos();
-            return View();
+            return View(ProdutoDAO.RetornarProdutos());
         }
         public ActionResult CadastrarProduto()
         {
@@ -25,16 +24,8 @@ namespace EcommerceOsorioManha.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
+        public ActionResult CadastrarProduto(Produto produto)
         {
-            Produto produto = new Produto()
-            {
-                Nome = txtNome,
-                Descricao = txtDescricao,
-                Preco = Convert.ToDouble(txtPreco),
-                Categoria = txtCategoria
-            };
-
             ProdutoDAO.SalvarProduto(produto);
 
             return RedirectToAction("Index","Produto");
