@@ -22,16 +22,23 @@ namespace EcommerceOsorioManha.DAO
             }
         }
 
-        public static void SalvarProduto(Produto produto)
+        public static bool SalvarProduto(Produto produto)
         {
-            try
+            if (BuscarProdutoPorNome(produto) == null)
             {
                 contexto.Produtos.Add(produto);
-                contexto.SaveChanges();              
+                contexto.SaveChanges();
+                return true;
             }
-            catch (Exception)
+            else
             {
-            }            
+                return false;
+            }
+        }
+
+        public static Produto BuscarProdutoPorNome(Produto produto)
+        {
+            return contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome));
         }
 
         public static Produto BuscarProdutoPorId(int? Id)
@@ -43,7 +50,7 @@ namespace EcommerceOsorioManha.DAO
             catch (Exception)
             {
                 return null;
-            }           
+            }
         }
 
         public static void RemoverProduto(int? Id)
@@ -55,7 +62,7 @@ namespace EcommerceOsorioManha.DAO
             }
             catch (Exception)
             {
-            }          
+            }
 
         }
 
@@ -69,7 +76,7 @@ namespace EcommerceOsorioManha.DAO
             catch (Exception)
             {
             }
-            
+
         }
 
     }

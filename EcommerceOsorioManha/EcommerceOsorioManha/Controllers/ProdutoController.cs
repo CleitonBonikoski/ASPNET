@@ -26,9 +26,16 @@ namespace EcommerceOsorioManha.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProdutoDAO.SalvarProduto(produto);
+                if (ProdutoDAO.SalvarProduto(produto))
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Não é possível add o produto com o mesmo nome!");
+                    return View(produto);
+                }
 
-                return RedirectToAction("Index", "Produto");
             }
             else
             {
