@@ -8,6 +8,9 @@
 
     <br>
 
+    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")<br />
+    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria")
+
     <div class="navbar">
         @Html.ActionLink("Alimento", "Index", "Home", new { id = 0 , cat = "Alimento" }, null)
         @Html.ActionLink("Casa", "Index", "Home", new { id = 0 , cat = "Casa" }, null)
