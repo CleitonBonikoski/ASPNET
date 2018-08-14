@@ -1,0 +1,28 @@
+﻿@using EcommerceOsorioManha.Models
+@model List<Produto>
+@{
+}
+<div>
+    <h1>Gerenciamento de Produtos</h1>
+    @*<a href="~/Views/Produto/Cadastra"> Cadastrar Produto </a>*@
+    @* Link em MVC Razor *@
+    <br>
+    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")<br />
+    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria")
+
+
+    <table class="table table-hover table-striped"
+           style="margin-top:30px">
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Imagens</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+
+    </table>
+</div>

@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
@@ -159,12 +160,13 @@
     <Content Include="Views\_viewstart.cshtml" />
     <Content Include="Views\Produto\AlterarProduto.cshtml" />
     <Content Include="Views\Produto\CadastrarProduto.cshtml" />
-    <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Produto\IndexProduto.cshtml" />
     <Content Include="Views\Produto\RemoverProduto.cshtml" />
     <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
     <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
-    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\IndexCategoria.cshtml" />
     <Content Include="Views\Categoria\RemoverCategoria.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
