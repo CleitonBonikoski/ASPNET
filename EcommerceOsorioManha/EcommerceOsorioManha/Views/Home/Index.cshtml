@@ -1,28 +1,58 @@
 ﻿@using EcommerceOsorioManha.Models
 @model List<Produto>
 @{
+    Produto produto = ViewBag.ProdutoDetalhe;
 }
 <div>
-    <h1>Gerenciamento de Produtos</h1>
-    @*<a href="~/Views/Produto/Cadastra"> Cadastrar Produto </a>*@
-    @* Link em MVC Razor *@
+    <h1>Gerenciamento</h1>
+
     <br>
-    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")<br />
-    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria")
+
+    <div class="navbar">
+        @Html.ActionLink("Alimento", "Index", "Home", new { id = 0 , cat = "Alimento" }, null)
+        @Html.ActionLink("Casa", "Index", "Home", new { id = 0 , cat = "Casa" }, null)
+        @Html.ActionLink("Automoveis", "Index", "Home", new { id = 0 , cat = "Automoveis" }, null)
+
+    </div>
+
+    @if (produto != null && produto.ProdutoId > 0)
+    {
+        <table class="table table-hover table-striped"
+               style="margin-top:30px">
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Imagens</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td> <img src="~/Imagens/@produto.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"   </td>
+                <td>@produto.Nome</td>
+                <td> @produto.Descricao</td>
+                <td> @produto.Preco</td>
+                <td> @produto.Categoria.Nome</td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        foreach (Produto produtorodutoCadastrado in Model)
+        {
+            <tr>
+                <td> <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"   </td>
+                <td> @Html.ActionLink("Detalhes", "Index", "Home", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
+                <br>
+                <br>
+            </tr>
+        }
+
+    }
 
 
-    <table class="table table-hover table-striped"
-           style="margin-top:30px">
-        <tr>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th>Categoria</th>
-            <th>Imagens</th>
-            <th></th>
-            <th></th>
-        </tr>
 
 
-    </table>
 </div>

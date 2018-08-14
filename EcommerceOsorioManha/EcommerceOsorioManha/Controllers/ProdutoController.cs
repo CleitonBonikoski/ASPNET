@@ -12,6 +12,8 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class ProdutoController : Controller
     {
+        private static Contexto contexto = SingletonContext.GetInstance();
+
         // GET: Produto
         public ActionResult Index()
         {
@@ -19,7 +21,10 @@ namespace EcommerceOsorioManha.Controllers
             return View(ProdutoDAO.RetornarProdutos());
         }
 
-
+        public static List<Produto> RetornarProduto()
+        {
+            return contexto.Produtos.ToList();
+        }
 
         public ActionResult CadastrarProduto()
         {

@@ -17,6 +17,10 @@ namespace EcommerceOsorioManha.DAL
                 Include("Categoria").
                 ToList();
         }
+        public static List<Produto> RetornarProdutosPorCategoria(string cat)
+        {
+            return contexto.Produtos.Where(x => x.Categoria.Nome.ToString().Contains(cat)).ToList();
+        }
 
         public static bool CadastrarProduto(Produto produto)
         {
