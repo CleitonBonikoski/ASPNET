@@ -131,16 +131,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
+    <Compile Include="DAO\SingletonContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808071430468_CriarBanco.cs" />
-    <Compile Include="Migrations\201808071430468_CriarBanco.Designer.cs">
-      <DependentUpon>201808071430468_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808141208336_CriarBanco.cs" />
+    <Compile Include="Migrations\201808141208336_CriarBanco.Designer.cs">
+      <DependentUpon>201808141208336_CriarBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,11 +155,16 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Produto\Index.cshtml" />
-    <Content Include="Views\Produto\CadastrarProduto.cshtml" />
-    <Content Include="Views\Produto\AlterarProduto.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\_viewstart.cshtml" />
+    <Content Include="Views\Produto\AlterarProduto.cshtml" />
+    <Content Include="Views\Produto\CadastrarProduto.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Produto\RemoverProduto.cshtml" />
+    <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
+    <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\RemoverCategoria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,10 +174,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808071430468_CriarBanco.resx">
-      <DependentUpon>201808071430468_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808141208336_CriarBanco.resx">
+      <DependentUpon>201808141208336_CriarBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

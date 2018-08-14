@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace EcommerceOsorioManha.Models
 {
@@ -13,23 +9,23 @@ namespace EcommerceOsorioManha.Models
         [Key]
         public int ProdutoId { get; set; }
 
-        [Required(ErrorMessage ="Campo Obrigatório !")]
-        [MaxLength(50, ErrorMessage ="Tamanho máximo de 50 letras")]
-        [Display(Name ="Nome do Produto")]
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [MaxLength(50, ErrorMessage = "O campo deve ter no maximo 50 caracteres!")]
+        [Display(Name = "Nome do produto")]
         public string Nome { get; set; }
 
-        [Display(Name = "Descrição do Produto")]
+        [Display(Name = "Descrição do produto")]
         [DataType(DataType.MultilineText)]
         public string Descricao { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório !")]
-        [Range(0,1000)]
-        [Display(Name = "Preço do Produto")]
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [Display(Name = "Preço do produto")]
         public double Preco { get; set; }
 
-        [Display(Name = "Categoria do Produto")]
-        public string Categoria { get; set; }
+        [Display(Name = "Categoria do produto")]
+        public Categoria Categoria { get; set; }
 
+        [Display(Name = "Imagem do produto")]
         public string Imagem { get; set; }
 
     }

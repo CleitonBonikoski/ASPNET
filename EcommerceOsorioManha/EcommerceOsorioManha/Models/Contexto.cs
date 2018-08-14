@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
 namespace EcommerceOsorioManha.Models
 {
@@ -13,5 +9,7 @@ namespace EcommerceOsorioManha.Models
 
         // Mapear as classes no banco
         public DbSet<Produto> Produtos { get; set; }
+
+        public DbSet<Categoria> Categorias { get; set; }
     }
 }

@@ -2,46 +2,50 @@
 @model List<Produto>
 
 @{
-
     DateTime data = ViewBag.Data;
 }
+
 <div>
-    <h2>Gerenciamento de Produtos</h2>
+    <h1>Gerenciamento de Produtos</h1>
 
     @*<a href="~/Views/Produto/Cadastra"> Cadastrar Produto </a>*@
 
     @* Link em MVC Razor *@
 
-    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
+    <br>
 
-    <table class="table table-hover table-striped" style="margin-top:30px">
+    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")<br />
+    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria")
 
+
+    <table class="table table-hover table-striped"
+           style="margin-top:30px">
         <tr>
-            <th>Nome  </th>
-            <th>Descrição  </th>
-            <th>Preço  </th>
-            <th>Categoria  </th>
+
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Imagens</th>
             <th></th>
             <th></th>
         </tr>
 
-        @if (Model != null)
-            {
-                foreach (Produto ProdutoCadastrado in Model)
-                {
-                <tr>
-                    <td>@ProdutoCadastrado.Nome</td>
-                    <td>@ProdutoCadastrado.Descricao</td>
-                    <td>@ProdutoCadastrado.Preco</td>
-                    <td>@ProdutoCadastrado.Categoria</td>
-                    <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = ProdutoCadastrado.ProdutoId }, null)</td>
-                    <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { Id = ProdutoCadastrado.ProdutoId }, null)</td>
-                </tr>
-            }
 
-            <p> Dados Atualizados às: <b>@data </b><br></p>
+        @foreach (Produto produtorodutoCadastrado in Model)
+        {
+            <tr>
+                <td>@produtorodutoCadastrado.Nome</td>
+                <td> @produtorodutoCadastrado.Descricao</td>
+                <td> @produtorodutoCadastrado.Preco</td>
+                <td> @produtorodutoCadastrado.Categoria.Nome</td>
+                <td> <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px", height:100px"   </td>
+                <td> @Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
+                <td> @Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
+            </tr>
+
+
         }
-
     </table>
+    <p>Dados atualizados às: <b>@data</b></p>
 </div>
-
