@@ -8,8 +8,8 @@
 
     <br>
 
-    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")<br />
-    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria")
+    @Html.ActionLink("Gerenciar Produto", "IndexProduto", "Produto")<br />
+    @Html.ActionLink("Gerenciar Categoria", "IndexCategoria", "Categoria")<br/>
 
     <div class="navbar">
         @Html.ActionLink("Alimento", "Index", "Home", new { id = 0 , cat = "Alimento" }, null)
@@ -23,11 +23,12 @@
         <table class="table table-hover table-striped"
                style="margin-top:30px">
             <tr>
+
+                <th>Imagens</th>
                 <th>Nome</th>
                 <th>Descrição</th>
                 <th>Preço</th>
                 <th>Categoria</th>
-                <th>Imagens</th>
                 <th></th>
                 <th></th>
             </tr>

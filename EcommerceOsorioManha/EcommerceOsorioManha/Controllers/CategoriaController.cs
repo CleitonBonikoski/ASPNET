@@ -11,7 +11,7 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class CategoriaController : Controller
     {
-        public ActionResult Index()
+        public ActionResult IndexCategoria()
         {
             ViewBag.Data = DateTime.Now;
             return View(CategoriaDAO.RetornarCategorias());
@@ -32,7 +32,7 @@ namespace EcommerceOsorioManha.Controllers
                 if (CategoriaDAO.CadastrarCategoria(categoria))
                 {
 
-                    return RedirectToAction("Index", "Categoria");
+                    return RedirectToAction("IndexCategoria", "Categoria");
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace EcommerceOsorioManha.Controllers
         {
 
             CategoriaDAO.RemoverCategoria(id);
-            return RedirectToAction("Index", "Categoria");
+            return RedirectToAction("IndexCategoria", "Categoria");
 
         }
 
@@ -70,7 +70,7 @@ namespace EcommerceOsorioManha.Controllers
            
             CategoriaDAO.AlterarCategoria(categoriaOriginal);
 
-            return RedirectToAction("Index", "Categoria");
+            return RedirectToAction("IndexCategoria", "Categoria");
         }
     }
 }

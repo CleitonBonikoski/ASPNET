@@ -15,7 +15,7 @@ namespace EcommerceOsorioManha.Controllers
         private static Contexto contexto = SingletonContext.GetInstance();
 
         // GET: Produto
-        public ActionResult Index()
+        public ActionResult IndexProduto()
         {
             ViewBag.Data = DateTime.Now;
             return View(ProdutoDAO.RetornarProdutos());
@@ -67,7 +67,7 @@ namespace EcommerceOsorioManha.Controllers
                     if (ProdutoDAO.CadastrarProduto(produto))
                     {
 
-                        return RedirectToAction("Index", "Produto");
+                        return RedirectToAction("IndexProduto", "Produto");
                     }
                     else
                     {
@@ -89,7 +89,7 @@ namespace EcommerceOsorioManha.Controllers
         {
 
             ProdutoDAO.RemoverProduto(id);
-            return RedirectToAction("Index", "Produto");
+            return RedirectToAction("IndexProduto", "Produto");
 
         }
 
@@ -111,7 +111,7 @@ namespace EcommerceOsorioManha.Controllers
 
             ProdutoDAO.AlterarProduto(produtoOriginal);
 
-            return RedirectToAction("Index", "Produto");
+            return RedirectToAction("IndexProduto", "Produto");
         }
 
     }
