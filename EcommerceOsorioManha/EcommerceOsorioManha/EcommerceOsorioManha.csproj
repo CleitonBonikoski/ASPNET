@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -140,9 +141,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808141208336_CriarBanco.cs" />
-    <Compile Include="Migrations\201808141208336_CriarBanco.Designer.cs">
-      <DependentUpon>201808141208336_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808142200343_CriarBanco.cs" />
+    <Compile Include="Migrations\201808142200343_CriarBanco.Designer.cs">
+      <DependentUpon>201808142200343_CriarBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -179,8 +180,8 @@
     <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808141208336_CriarBanco.resx">
-      <DependentUpon>201808141208336_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808142200343_CriarBanco.resx">
+      <DependentUpon>201808142200343_CriarBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
