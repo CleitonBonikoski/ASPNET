@@ -14,49 +14,52 @@ namespace EcommerceOsorioManha.Controllers
     {
         private static Contexto contexto = SingletonContext.GetInstance();
 
-        // GET: Produto
+        #region IndexProduto
         public ActionResult IndexProduto()
         {
             ViewBag.Data = DateTime.Now;
             return View(ProdutoDAO.RetornarProdutos());
         }
+        #endregion
 
+        #region RetornarProduto
         public static List<Produto> RetornarProduto()
         {
             return contexto.Produtos.ToList();
         }
+        #endregion
 
+        #region CadastrarProduto
         public ActionResult CadastrarProduto()
         {
-            ViewBag.Categorias = 
+            ViewBag.Categorias =
                 new SelectList(CategoriaDAO.RetornarCategorias(),
                 "CategoriaID", "Nome");
             return View();
         }
+        #endregion
 
+        #region CadastrarProduto(Produto,int?,HttpPostedFileBase)
         [HttpPost]
-        public ActionResult CadastrarProduto(Produto produto, 
+        public ActionResult CadastrarProduto(Produto produto,
             int? Categorias, HttpPostedFileBase fupImagem)
         {
             ViewBag.Categorias =
-                new SelectList(CategoriaDAO.RetornarCategorias(), 
+                new SelectList(CategoriaDAO.RetornarCategorias(),
                 "CategoriaID", "Nome");
             if (ModelState.IsValid)
-
-
             {
                 if (Categorias != null)
                 {
                     if (fupImagem != null)
                     {
                         string nomeImagem = Path.GetFileName(fupImagem.FileName);
-                        string caminho = Path.Combine(Server.MapPath("~/Imagens/"), 
+                        string caminho = Path.Combine(Server.MapPath("~/Imagens/"),
                             nomeImagem);
 
                         fupImagem.SaveAs(caminho);
 
                         produto.Imagem = nomeImagem;
-
                     }
                     else
                     {
@@ -64,9 +67,9 @@ namespace EcommerceOsorioManha.Controllers
                     }
 
                     produto.Categoria = CategoriaDAO.BuscarCategoriaPorId(Categorias);
+
                     if (ProdutoDAO.CadastrarProduto(produto))
                     {
-
                         return RedirectToAction("IndexProduto", "Produto");
                     }
                     else
@@ -84,22 +87,26 @@ namespace EcommerceOsorioManha.Controllers
                 return View(produto);
             }
         }
+        #endregion
 
+        #region RemoverProduto(int?)
         public ActionResult RemoverProduto(int? id)
         {
-
             ProdutoDAO.RemoverProduto(id);
             return RedirectToAction("IndexProduto", "Produto");
-
         }
+        #endregion
 
+        #region AlterarProduto(int?)
         public ActionResult AlterarProduto(int? id)
         {
             return View(ProdutoDAO.BuscarProdutoPorId(id));
         }
+        #endregion
 
+        #region AlterarProduto(Produto, HttpPostedFileBase)
         [HttpPost]
-        public ActionResult AlterarProduto(Produto produtoAlterado)
+        public ActionResult AlterarProduto(Produto produtoAlterado, HttpPostedFileBase fupImagem)
         {
             Produto produtoOriginal =
             ProdutoDAO.BuscarProdutoPorId(produtoAlterado.ProdutoId);
@@ -109,10 +116,24 @@ namespace EcommerceOsorioManha.Controllers
             produtoOriginal.Preco = produtoAlterado.Preco;
             produtoOriginal.Categoria = produtoAlterado.Categoria;
 
+            if (fupImagem != null)
+            {
+                string nomeImagem = Path.GetFileName(fupImagem.FileName);
+                string caminho = Path.Combine(Server.MapPath("~/Imagens/"),
+                    nomeImagem);
+
+                fupImagem.SaveAs(caminho);
+
+                produtoOriginal.Imagem = nomeImagem;
+
+            }
+
             ProdutoDAO.AlterarProduto(produtoOriginal);
 
             return RedirectToAction("IndexProduto", "Produto");
         }
+        #endregion
 
-    }
-}
+    } // End class
+
+}//End namespace
