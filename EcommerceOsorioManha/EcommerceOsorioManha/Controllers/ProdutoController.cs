@@ -125,7 +125,6 @@ namespace EcommerceOsorioManha.Controllers
                 fupImagem.SaveAs(caminho);
 
                 produtoOriginal.Imagem = nomeImagem;
-
             }
 
             ProdutoDAO.AlterarProduto(produtoOriginal);

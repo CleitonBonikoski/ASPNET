@@ -11,27 +11,29 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class CategoriaController : Controller
     {
+        #region IndexCategoria
         public ActionResult IndexCategoria()
         {
             ViewBag.Data = DateTime.Now;
             return View(CategoriaDAO.RetornarCategorias());
         }
+        #endregion
 
+        #region CadastrarCategoria
         public ActionResult CadastrarCategoria()
         {
             return View();
         }
+        #endregion
 
+        #region CadastrarCategoria(Categoria)
         [HttpPost]
         public ActionResult CadastrarCategoria(Categoria categoria)
         {
             if (ModelState.IsValid)
-
-
             {
                 if (CategoriaDAO.CadastrarCategoria(categoria))
                 {
-
                     return RedirectToAction("IndexCategoria", "Categoria");
                 }
                 else
@@ -45,20 +47,24 @@ namespace EcommerceOsorioManha.Controllers
                 return View(categoria);
             }
         }
+        #endregion
 
+        #region RemoverCategoria(int?)
         public ActionResult RemoverCategoria(int? id)
         {
-
             CategoriaDAO.RemoverCategoria(id);
             return RedirectToAction("IndexCategoria", "Categoria");
-
         }
+        #endregion
 
+        #region AlterarCategoria(int?)
         public ActionResult AlterarCategoria(int? id)
         {
             return View(CategoriaDAO.BuscarCategoriaPorId(id));
         }
+        #endregion
 
+        #region AlterarCategoria(Categoria)
         [HttpPost]
         public ActionResult AlterarCategoria(Categoria categoriaAlterada)
         {
@@ -67,10 +73,12 @@ namespace EcommerceOsorioManha.Controllers
 
             categoriaOriginal.Nome = categoriaAlterada.Nome;
             categoriaOriginal.Descricao = categoriaAlterada.Descricao;
-           
+
             CategoriaDAO.AlterarCategoria(categoriaOriginal);
 
             return RedirectToAction("IndexCategoria", "Categoria");
         }
-    }
-}
+        #endregion
+
+    } // End class
+}// End namespace
