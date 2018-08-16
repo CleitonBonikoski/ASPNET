@@ -54,19 +54,30 @@
                 <td> @produto.Categoria.Nome</td>
             </tr>
         </table>
+
     }
     else
     {
-        foreach (Produto produtorodutoCadastrado in Model)
-        {
+        <table border="1">
             <tr>
-                <td> <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"   </td>
-                <td> @Html.ActionLink("Detalhes", "Index", "Home", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
-                <br>
-                <br>
+                @foreach (Produto produtorodutoCadastrado in Model)
+                {
+                <td>
+                    <div class="card text-white bg-primary mb-2" style="max-width: 10rem;">
+                        <div>
+                            <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+                                @Html.ActionLink("Detalhes", "Index", "Home", new { id = produtorodutoCadastrado.ProdutoId }, null)
+                            </nav>
+                        </div>
+                        <div class="card-body">
+                            <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"
+                        </div>
+                    </div>
+                </td>
+                }
             </tr>
-        }
+        </table>
+
 
     }
 
-</div>
