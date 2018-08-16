@@ -6,7 +6,7 @@
 }
 
 <div>
-    <h1>Gerenciamento de Produtos</h1>
+    <h1>Gerenciamento de Categoria</h1>
 
     @*<a href="~/Views/Produto/Cadastra"> Cadastrar Produto </a>*@
 
@@ -22,7 +22,7 @@
 
     <table class="table table-hover table-striped"
            style="margin-top:30px">
-        <tr>
+        <tr class="table-info">
 
             <th>Nome</th>
             <th>Descrição</th>
@@ -32,12 +32,12 @@
 
         @foreach (Categoria categoriacadastrada in Model)
         {
-            <tr>
-                <td>@categoriacadastrada.Nome</td>
-                <td> @categoriacadastrada.Descricao</td>
-                <td> @Html.ActionLink("Remover", "RemoverCategoria", "Categoria", new { id = categoriacadastrada.CategoriaID }, null)   </td>
-                <td> @Html.ActionLink("Alterar", "AlterarCategoria", "Categoria", new { id = categoriacadastrada.CategoriaID }, null)   </td>
-            </tr>
+        <tr class="table-light">
+            <td><b> @categoriacadastrada.Nome </b> </td>
+            <td><b> @categoriacadastrada.Descricao</b></td>
+            <td><b> @Html.ActionLink("Remover", "RemoverCategoria", "Categoria", new { id = categoriacadastrada.CategoriaID }, null)  </b> </td>
+            <td><b> @Html.ActionLink("Alterar", "AlterarCategoria", "Categoria", new { id = categoriacadastrada.CategoriaID }, null)  </b> </td>
+        </tr>
         }
     </table>
     <p>Dados atualizados às: <b>@data</b></p>

@@ -20,7 +20,7 @@
 
     <table class="table table-hover table-striped"
            style="margin-top:30px">
-        <tr>
+        <tr class="table-info">
 
             <th>Nome</th>
             <th>Descrição</th>
@@ -34,15 +34,15 @@
 
         @foreach (Produto produtorodutoCadastrado in Model)
         {
-            <tr>
-                <td>@produtorodutoCadastrado.Nome</td>
-                <td> @produtorodutoCadastrado.Descricao</td>
-                <td> @produtorodutoCadastrado.Preco</td>
-                <td> @produtorodutoCadastrado.Categoria.Nome</td>
-                <td> <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px", height:100px"   </td>
-                <td> @Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
-                <td> @Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
-            </tr>
+        <tr class="table-light">
+            <td><b> @produtorodutoCadastrado.Nome</b></td>
+            <td><b> @produtorodutoCadastrado.Descricao</b></td>
+            <td><b> @produtorodutoCadastrado.Preco</b></td>
+            <td><b> @produtorodutoCadastrado.Categoria.Nome</b></td>
+            <td> <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"   </td>
+            <td><b> @Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)  </b>  </td>
+            <td><b> @Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)  </b> </td>
+        </tr>
 
 
         }
