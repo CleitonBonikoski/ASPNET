@@ -31,7 +31,7 @@
     {
         <table class="table table-hover table-striped"
                style="margin-top:30px">
-            <tr>
+            <tr class="table-info">
                 <th>Imagens</th>
                 <th>Nome</th>
                 <th>Descrição</th>
@@ -41,12 +41,12 @@
                 <th></th>
             </tr>
 
-            <tr>
+            <tr class="table-light">
                 <td> <img src="~/Imagens/@produto.Imagem" alt="Imagem do produto" style="width:300px" , height:300px"   </td>
-                <td>@produto.Nome</td>
-                <td> @produto.Descricao</td>
-                <td> @produto.Preco</td>
-                <td> @produto.Categoria.Nome</td>
+                <td><b>@produto.Nome</b></td>
+                <td><b> @produto.Descricao</b></td>
+                <td><b> @produto.Preco</b></td>
+                <td><b> @produto.Categoria.Nome</b></td>
             </tr>
         </table>
 
