@@ -7,16 +7,29 @@
     <h1>Gerenciamento</h1>
 
     <br>
-
-    @Html.ActionLink("Gerenciar Produto", "IndexProduto", "Produto")<br />
-    @Html.ActionLink("Gerenciar Categoria", "IndexCategoria", "Categoria")<br/>
-
-    <div class="navbar">
-        @Html.ActionLink("Alimento", "Index", "Home", new { id = 0 , cat = "Alimento" }, null)
-        @Html.ActionLink("Casa", "Index", "Home", new { id = 0 , cat = "Casa" }, null)
-        @Html.ActionLink("Automoveis", "Index", "Home", new { id = 0 , cat = "Automoveis" }, null)
-
+    @Html.ActionLink("Gerenciar Produto", "IndexProduto", "Produto", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Gerenciar Categoria", "IndexCategoria", "Categoria", null, new { @class = "btn btn-primary btn-sm" })
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    @Html.ActionLink("Alimento", "Index", "Home", new { @class = "btn btn-secondary my-2 my-sm-0", id = 0, cat = "Alimento" }, null)
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    @Html.ActionLink("Casa", "Index", "Home", new { @class = "btn btn-secondary my-2 my-sm-0", id = 0, cat = "Casa" }, null)
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    @Html.ActionLink("Automoveis", "Index", "Home", new { @class = "btn btn-secondary my-2 my-sm-0", id = 0, cat = "Automoveis" }, null)
+                </li>
+            </ul>
+        </nav>
     </div>
+    @*<div class="navbar">
+        </div>*@
 
     @if (produto != null && produto.ProdutoId > 0)
     {
