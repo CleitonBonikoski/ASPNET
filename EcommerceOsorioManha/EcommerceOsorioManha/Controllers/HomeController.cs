@@ -18,30 +18,16 @@ namespace EcommerceOsorioManha.Controllers
             }
             if (cat != null)
             {
-                if (cat.Equals("Alimento"))
+                if (CategoriaDAO.BuscarCategoriaPorNome(cat))
                 {
-                    return View(ProdutoDAO.RetornarProdutosPorCategoria(cat));
-                }
-                else if (cat.Equals("Casa"))
-                {
-                    return View(ProdutoDAO.RetornarProdutosPorCategoria(cat));
+                    ViewBag.CategoriaMenu = CategoriaDAO.RetornarCategorias();
 
-                }
-                else if (cat.Equals("Automoveis"))
-                {
                     return View(ProdutoDAO.RetornarProdutosPorCategoria(cat));
-
                 }
-            }            
+            }
+            ViewBag.CategoriaMenu = CategoriaDAO.RetornarCategorias();
 
             return View(ProdutoDAO.RetornarProdutos());
-        }
-
-        [HttpPost]
-        public ActionResult DetalheProduto(int? id)
-        {
-            return View();
-        }
-
+        }        
     }
 }
