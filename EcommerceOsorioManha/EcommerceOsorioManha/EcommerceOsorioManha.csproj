@@ -136,6 +136,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
+    <Compile Include="DAO\ItemVendaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SingletonContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,6 +145,10 @@
     <Compile Include="Migrations\201808171250021_CriarBanco.cs" />
     <Compile Include="Migrations\201808171250021_CriarBanco.Designer.cs">
       <DependentUpon>201808171250021_CriarBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171314297_UPTableItemVenda.cs" />
+    <Compile Include="Migrations\201808171314297_UPTableItemVenda.Designer.cs">
+      <DependentUpon>201808171314297_UPTableItemVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -169,6 +174,7 @@
     <Content Include="Views\Categoria\IndexCategoria.cshtml" />
     <Content Include="Views\Categoria\RemoverCategoria.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\CarrinhoCompras.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,6 +189,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808171250021_CriarBanco.resx">
       <DependentUpon>201808171250021_CriarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171314297_UPTableItemVenda.resx">
+      <DependentUpon>201808171314297_UPTableItemVenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

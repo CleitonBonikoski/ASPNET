@@ -13,7 +13,7 @@ namespace EcommerceOsorioManha.Models
         [Key]
         public int ItemVendaId { get; set; }
 
-        public Produto produto { get; set; }
+        public Produto Produto { get; set; }
 
         public int Quantidade { get; set; }
 
