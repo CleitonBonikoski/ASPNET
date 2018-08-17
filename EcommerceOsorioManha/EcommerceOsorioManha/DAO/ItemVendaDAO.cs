@@ -30,5 +30,10 @@ namespace EcommerceOsorioManha.DAO
             }
             return true;
         }
+
+        public static List<ItemVenda> RetornarItensVenda()
+        {
+            return contexto.ItensVenda.ToList();
+        }
     }
 }

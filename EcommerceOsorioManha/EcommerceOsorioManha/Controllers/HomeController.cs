@@ -43,7 +43,12 @@ namespace EcommerceOsorioManha.Controllers
                 Data = DateTime.Now                
             };
             ItemVendaDAO.AdicionarItemVendaAoCarrinho(itemVenda);
-            return RedirectToAction("CarrinhoCompras");
+            return RedirectToAction("CarrinhoCompras","Home");
+        }
+
+        public ActionResult CarrinhoCompras()
+        {
+            return View(ItemVendaDAO.RetornarItensVenda());
         }
     }
 }
