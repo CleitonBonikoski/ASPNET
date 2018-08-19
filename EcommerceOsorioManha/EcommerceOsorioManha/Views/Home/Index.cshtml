@@ -37,7 +37,7 @@
             </tr>
 
             <tr class="table-light">
-                <td> <img src="~/Imagens/@produto.Imagem" alt="Imagem do produto" style="width:300px" , height:300px"   </td>
+                <td> <img id="ImagemDeDetalhe" src="~/Imagens/@produto.Imagem" alt="Imagem do produto" style="width:300px" , height:300px" onmousemove="AumentarImagemDetalhe()" onmouseout="DiminuirImagemDetalhe()" />   </td>
                 <td>
                     Nome do produto <b>@produto.Nome</b><br>
                     Descrição <b>@produto.Descricao</b> <br>
@@ -60,11 +60,11 @@
                         <div class="card text-white bg-primary mb-2" style="max-width: 10rem;">
                             <div>
                                 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-                                    @Html.ActionLink("Detalhes", "Index", "Home", new { id = produtorodutoCadastrado.ProdutoId }, null)
+                                    @Html.ActionLink("Detalhes", "Index", "Home", new { id = produtorodutoCadastrado.ProdutoId }, new { @class = "btn btn-info" })
                                 </nav>
                             </div>
                             <div class="card-body">
-                                <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"
+                                <img id="ImagemDoMenu" src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px" , height:100px" onclick="ClickNaImagem()" />
                             </div>
                         </div>
                         <div>
@@ -72,7 +72,6 @@
                                 @Html.ActionLink("Adicionar", "AdicionarAoCarrinho", "Home", new { id = produtorodutoCadastrado.ProdutoId }, new { @class = "btn btn-success"})
                             </nav>
                         </div>
-
                     </td>
                 }
             </tr>
