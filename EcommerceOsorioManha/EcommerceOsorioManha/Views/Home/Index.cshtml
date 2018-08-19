@@ -19,7 +19,7 @@
                 {
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            @Html.ActionLink(@item.Nome, "Index", "Home", new { @class = "btn btn-secondary my-2 my-sm-0", id = 0, cat = @item.Nome }, null)
+                            @Html.ActionLink(@item.Nome, "Index", "Home", new { @class = "btn btn-secondary my-2 my-sm-0", id = 0, cat = @item.Nome }, new { @class = "btn btn-secondary btn-sm" })
                         </li>
                     </ul>
                 }
@@ -43,7 +43,7 @@
                     Descrição <b>@produto.Descricao</b> <br>
                     Valor de<b> R$@produto.Preco</b> <br>
                     Sua categoria é <b>@produto.Categoria.Nome </b><br><br>
-                    @Html.ActionLink("Adicionar", "AdicionarAoCarrinho", "Home", new { id = produto.ProdutoId }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Comprar", "AdicionarAoCarrinho", "Home", new { id = produto.ProdutoId }, new { @class = "btn btn-success" })
                 </td>
             </tr>
             
@@ -69,7 +69,7 @@
                         </div>
                         <div>
                             <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="margin-top:10px">
-                                @Html.ActionLink("Adicionar", "AdicionarAoCarrinho", "Home", new { id = produtorodutoCadastrado.ProdutoId }, new { @class = "btn btn-success"})
+                                @Html.ActionLink("Comprar", "AdicionarAoCarrinho", "Home", new { id = produtorodutoCadastrado.ProdutoId }, new { @class = "btn btn-success" })
                             </nav>
                         </div>
                     </td>
