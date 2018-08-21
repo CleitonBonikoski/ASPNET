@@ -20,5 +20,7 @@ namespace EcommerceOsorioManha.Models
         public double Preco { get; set; }
 
         public DateTime Data { get; set; }
+
+        public string CarrinhoId { get; set; }
     }
 }

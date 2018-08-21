@@ -31,9 +31,9 @@ namespace EcommerceOsorioManha.DAO
             return true;
         }
 
-        public static List<ItemVenda> RetornarItensVenda()
+        public static List<ItemVenda> RetornarItensVenda(string carrinhoId)
         {
-            return contexto.ItensVenda.ToList();
+            return contexto.ItensVenda.Where(_ => _.CarrinhoId.Equals(carrinhoId)).ToList();
         }
     }
 }

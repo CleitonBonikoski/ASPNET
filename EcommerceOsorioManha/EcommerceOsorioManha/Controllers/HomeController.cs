@@ -34,21 +34,27 @@ namespace EcommerceOsorioManha.Controllers
         
         public ActionResult AdicionarAoCarrinho(int Id)
         {
+
+            // Forma de gerar o identificador universar único.
+            Guid guid = Guid.NewGuid();
+
             Produto produto = ProdutoDAO.BuscarProdutoPorId(Id);
             ItemVenda itemVenda = new ItemVenda
             {
                 Produto = produto,
                 Quantidade = 1,
                 Preco = produto.Preco,
-                Data = DateTime.Now                
+                Data = DateTime.Now,
+                CarrinhoId = guid.ToString()
+               
             };
             ItemVendaDAO.AdicionarItemVendaAoCarrinho(itemVenda);
-            return RedirectToAction("CarrinhoCompras","Home");
+            return RedirectToAction("CarrinhoCompras","Home", new { itemVenda.CarrinhoId });
         }
 
-        public ActionResult CarrinhoCompras()
+        public ActionResult CarrinhoCompras(string carrinhoId)
         {
-            return View(ItemVendaDAO.RetornarItensVenda());
+            return View(ItemVendaDAO.RetornarItensVenda(carrinhoId));
         }
     }
 }
