@@ -1,6 +1,7 @@
 ﻿using EcommerceOsorioManha.DAL;
 using EcommerceOsorioManha.DAO;
 using EcommerceOsorioManha.Models;
+using EcommerceOsorioManha.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,10 +35,6 @@ namespace EcommerceOsorioManha.Controllers
         
         public ActionResult AdicionarAoCarrinho(int Id)
         {
-
-            // Forma de gerar o identificador universar único.
-            Guid guid = Guid.NewGuid();
-
             Produto produto = ProdutoDAO.BuscarProdutoPorId(Id);
             ItemVenda itemVenda = new ItemVenda
             {
@@ -45,16 +42,16 @@ namespace EcommerceOsorioManha.Controllers
                 Quantidade = 1,
                 Preco = produto.Preco,
                 Data = DateTime.Now,
-                CarrinhoId = guid.ToString()
+                CarrinhoId = Sessao.RetornarCarrinhoId()
                
             };
             ItemVendaDAO.AdicionarItemVendaAoCarrinho(itemVenda);
-            return RedirectToAction("CarrinhoCompras","Home", new { itemVenda.CarrinhoId });
+            return RedirectToAction("CarrinhoCompras","Home");
         }
 
-        public ActionResult CarrinhoCompras(string carrinhoId)
+        public ActionResult CarrinhoCompras()
         {
-            return View(ItemVendaDAO.RetornarItensVenda(carrinhoId));
+            return View(ItemVendaDAO.BuscarItensVendaPorCarrinhoId(Sessao.RetornarCarrinhoId()));
         }
     }
 }
