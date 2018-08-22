@@ -39,7 +39,7 @@ namespace EcommerceOsorioManha.Controllers
         {
             Produto produto = ProdutoDAO.BuscarProdutoPorId(Id);
 
-            ItemVenda itemVenda = ItemVendaDAO.EditaQuantidadeItemVendaNoCarrinho(produto);
+            ItemVenda itemVenda = ItemVendaDAO.EditaQuantidadeItemVendaNoCarrinho(produto, true);
             
             ItemVendaDAO.AdicionarItemVendaAoCarrinho(itemVenda);
 
@@ -57,8 +57,10 @@ namespace EcommerceOsorioManha.Controllers
         #region RemoverItem(int)
         public ActionResult RemoverItem(int Id)
         {
-            ItemVendaDAO.RemoverItem(Id);
-            return RedirectToAction("Index", "Home");
+            Produto produto = ItemVendaDAO.BuscarProdutoPorItemId(Id);
+            ItemVendaDAO.EditaQuantidadeItemVendaNoCarrinho(produto, false);
+
+            return RedirectToAction("CarrinhoCompras", "Home");
         }
         #endregion
 

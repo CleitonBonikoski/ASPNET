@@ -42,7 +42,7 @@
             @subTotal.ToString("C2")
         </td>
         <td>
-            <b> @Html.ActionLink("Remover", "RemoverItem", "Home", new { IdItem = item.ItemVendaId , produto = item.Produto }, new { @class = "btn btn-warning" })  </b>
+            <b> @Html.ActionLink("Remover", "RemoverItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-warning" })  </b>
         </td>
     </tr>
 }

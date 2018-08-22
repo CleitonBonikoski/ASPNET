@@ -3,6 +3,7 @@ using EcommerceOsorioManha.Models;
 using EcommerceOsorioManha.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -26,7 +27,9 @@ namespace EcommerceOsorioManha.DAO
         #endregion
 
         #region EditaQuantidadeItemVendaNoCarrinho(Produto)
-        public static ItemVenda EditaQuantidadeItemVendaNoCarrinho(Produto produto)
+        // Caso adicionar seja true, então adiciona +1 ao carrinho
+        // Caso adicionar seja false, então remove -1 do carrinho
+        public static ItemVenda EditaQuantidadeItemVendaNoCarrinho(Produto produto, bool adicionar)
         {
             ItemVenda itemVenda = new ItemVenda();
 
@@ -34,12 +37,32 @@ namespace EcommerceOsorioManha.DAO
 
             ItemVenda itemCarrinho = contexto.ItensVenda.FirstOrDefault(_ => _.Produto.ProdutoId == produto.ProdutoId && _.CarrinhoId == sessaoId);
 
-            if (itemCarrinho == null)
-                itemVenda.Quantidade = 1;
+            if (adicionar)
+            {
+                if (itemCarrinho == null)
+                {
+                    itemVenda.Quantidade = 1;
+                }
+                else
+                {
+                    RemoverItem(itemCarrinho.ItemVendaId);
+                    itemVenda.Quantidade = ++itemCarrinho.Quantidade;
+                }
+            }
             else
             {
-                RemoverItem(itemCarrinho.ItemVendaId);
-                itemVenda.Quantidade = ++itemCarrinho.Quantidade;
+                if (itemCarrinho.Quantidade > 1)
+                {
+                    --itemCarrinho.Quantidade;
+
+                    contexto.SaveChanges();
+
+                    return null;
+                }
+                else
+                {
+                    RemoverItem(itemCarrinho.ItemVendaId);
+                }
             }
 
             itemVenda.Produto = produto;
@@ -48,6 +71,15 @@ namespace EcommerceOsorioManha.DAO
             itemVenda.CarrinhoId = sessaoId;
 
             return itemVenda;
+        }
+        #endregion
+
+        #region BuscarProdutoPorItemId(int)
+        internal static Produto BuscarProdutoPorItemId(int id)
+        {
+            ItemVenda item = contexto.ItensVenda.Find(id);
+
+            return item.Produto;
         }
         #endregion
 
