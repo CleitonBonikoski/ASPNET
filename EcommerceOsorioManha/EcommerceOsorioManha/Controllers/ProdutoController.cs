@@ -133,6 +133,5 @@ namespace EcommerceOsorioManha.Controllers
         }
         #endregion
 
-    } // End class
-
-}//End namespace
+    }
+}

@@ -12,7 +12,7 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        #region Index(int?, string)
         public ActionResult Index(int? id , string cat)
         {
             if(id != null && id > 0)
@@ -31,8 +31,10 @@ namespace EcommerceOsorioManha.Controllers
             ViewBag.CategoriaMenu = CategoriaDAO.RetornarCategorias();
 
             return View(ProdutoDAO.RetornarProdutos());
-        }    
-        
+        }
+        #endregion
+
+        #region AdicionarAoCarrinho(int)
         public ActionResult AdicionarAoCarrinho(int Id)
         {
             Produto produto = ProdutoDAO.BuscarProdutoPorId(Id);
@@ -43,16 +45,22 @@ namespace EcommerceOsorioManha.Controllers
 
             return RedirectToAction("CarrinhoCompras","Home");
         }
+        #endregion
 
+        #region CarrinhoCompras()
         public ActionResult CarrinhoCompras()
         {
             return View(ItemVendaDAO.BuscarItensVendaPorCarrinhoId(Sessao.RetornarCarrinhoId()));
         }
+        #endregion
 
+        #region RemoverItem(int)
         public ActionResult RemoverItem(int Id)
         {
             ItemVendaDAO.RemoverItem(Id);
             return RedirectToAction("Index", "Home");
         }
+        #endregion
+
     }
 }
