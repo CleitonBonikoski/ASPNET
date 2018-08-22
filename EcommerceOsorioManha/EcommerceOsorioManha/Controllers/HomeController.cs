@@ -12,10 +12,12 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class HomeController : Controller
     {
+        string sessaoAtual = Sessao.RetornarCarrinhoId();
+
         #region Index(int?, string)
         public ActionResult Index(int? id , string cat)
         {
-            if(id != null && id > 0)
+            if (id != null && id > 0)
             {
                 ViewBag.ProdutoDetalhe = ProdutoDAO.BuscarProdutoPorId(id);
             }
@@ -29,6 +31,7 @@ namespace EcommerceOsorioManha.Controllers
                 }
             }
             ViewBag.CategoriaMenu = CategoriaDAO.RetornarCategorias();
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
 
             return View(ProdutoDAO.RetornarProdutos());
         }
@@ -43,6 +46,8 @@ namespace EcommerceOsorioManha.Controllers
             
             ItemVendaDAO.AdicionarItemVendaAoCarrinho(itemVenda);
 
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
+            
             return RedirectToAction("CarrinhoCompras","Home");
         }
         #endregion
@@ -50,6 +55,8 @@ namespace EcommerceOsorioManha.Controllers
         #region CarrinhoCompras()
         public ActionResult CarrinhoCompras()
         {
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
+
             return View(ItemVendaDAO.BuscarItensVendaPorCarrinhoId(Sessao.RetornarCarrinhoId()));
         }
         #endregion
@@ -60,6 +67,8 @@ namespace EcommerceOsorioManha.Controllers
             Produto produto = ItemVendaDAO.BuscarProdutoPorItemId(Id);
             ItemVendaDAO.EditaQuantidadeItemVendaNoCarrinho(produto, false);
 
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
+
             return RedirectToAction("CarrinhoCompras", "Home");
         }
         #endregion
@@ -69,6 +78,8 @@ namespace EcommerceOsorioManha.Controllers
         {            
             ItemVendaDAO.DiminuirItemAteUm(ItemVendaDAO.RetornarItemVendaPorId(Id));
 
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
+
             return RedirectToAction("CarrinhoCompras", "Home");
         }
         #endregion
@@ -77,6 +88,8 @@ namespace EcommerceOsorioManha.Controllers
         public ActionResult AumentarItem(int Id)
         {
             ItemVendaDAO.AumentarItemNoCarrinho(ItemVendaDAO.RetornarItemVendaPorId(Id));
+
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
 
             return RedirectToAction("CarrinhoCompras", "Home");
         }
