@@ -26,6 +26,21 @@ namespace EcommerceOsorioManha.DAO
         }
         #endregion
 
+        #region AumentarItemNoCarrinho(ItemVenda)
+        internal static void AumentarItemNoCarrinho(ItemVenda itemVenda)
+        {
+            try
+            {
+                ++itemVenda.Quantidade;
+
+                contexto.SaveChanges();
+            }
+            catch (Exception)
+            {
+            }
+        }
+        #endregion
+
         #region EditaQuantidadeItemVendaNoCarrinho(Produto)
         // Caso adicionar seja true, então adiciona +1 ao carrinho
         // Caso adicionar seja false, então remove -1 do carrinho
@@ -40,18 +55,14 @@ namespace EcommerceOsorioManha.DAO
             if (adicionar)
             {
                 if (itemCarrinho == null)
-                {
                     itemVenda.Quantidade = 1;
-                }
                 else
-                {
-                    RemoverItem(itemCarrinho.ItemVendaId);
-                    itemVenda.Quantidade = ++itemCarrinho.Quantidade;
-                }
+                    AumentarItemNoCarrinho(itemCarrinho);
+
             }
             else
             {
-                if(!DiminuirItemAteUm(itemCarrinho))
+                if (!DiminuirItemAteUm(itemCarrinho))
                     RemoverItem(itemCarrinho.ItemVendaId);
             }
 
@@ -65,13 +76,13 @@ namespace EcommerceOsorioManha.DAO
         #endregion
 
         #region DiminuirItemAteUm(ItemVenda)
-        internal static bool DiminuirItemAteUm(ItemVenda item)
+        internal static bool DiminuirItemAteUm(ItemVenda itemVenda)
         {
             try
             {
-                if (item.Quantidade > 1)
+                if (itemVenda.Quantidade > 1)
                 {
-                    --item.Quantidade;
+                    --itemVenda.Quantidade;
 
                     contexto.SaveChanges();
 

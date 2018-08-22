@@ -73,5 +73,15 @@ namespace EcommerceOsorioManha.Controllers
         }
         #endregion
 
+        #region AumentarItem(int)
+        public ActionResult AumentarItem(int Id)
+        {
+            ItemVendaDAO.AumentarItemNoCarrinho(ItemVendaDAO.RetornarItemVendaPorId(Id));
+
+            return RedirectToAction("CarrinhoCompras", "Home");
+        }
+        #endregion
+        
+
     }
 }
