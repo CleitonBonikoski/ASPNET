@@ -33,8 +33,19 @@ namespace EcommerceOsorioManha.DAO
 
         public static List<ItemVenda> BuscarItensVendaPorCarrinhoId(string carrinhoId)
         {
-            return contexto.ItensVenda.
+            return contexto.ItensVenda.Include("Produto").
                 Where(_ => _.CarrinhoId.Equals(carrinhoId)).ToList();
+        }
+
+        public static void RemoverItem(int Id)
+        {
+            contexto.ItensVenda.Remove(RetornarItemVendaPorId(Id));
+            contexto.SaveChanges();
+        }
+
+        private static ItemVenda RetornarItemVendaPorId(int id)
+        {
+            return contexto.ItensVenda.Find(id);
         }
     }
 }

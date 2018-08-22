@@ -53,5 +53,11 @@ namespace EcommerceOsorioManha.Controllers
         {
             return View(ItemVendaDAO.BuscarItensVendaPorCarrinhoId(Sessao.RetornarCarrinhoId()));
         }
+
+        public ActionResult RemoverItem(int Id)
+        {
+            ItemVendaDAO.RemoverItem(Id);
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -5,11 +5,11 @@
 }
 
 <h2>CarrinhoCompras</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.Imagem)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Quantidade)
         </th>
@@ -19,24 +19,35 @@
         <th>
             @Html.DisplayNameFor(model => model.Data)
         </th>
+        <th>
+            SubTotal
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Quantidade)
+            <img src="~/Imagens/@item.Produto.Imagem" alt="Imagem" style="width:100px" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Preco)
+            @item.Quantidade
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Data)
+            @item.Preco.ToString("C2")
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ItemVendaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ItemVendaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ItemVendaId })
+            @item.Data
+        </td>
+        @{
+            double subTotal = (item.Quantidade * item.Preco);
+        }
+        <td>
+            @subTotal
+        </td>
+        <td>
+        <td>
+            <b> @Html.ActionLink("Remover", "RemoverItem", "Home", new { id = item.ItemVendaId }, null)  </b>  </td>
         </td>
     </tr>
 }
