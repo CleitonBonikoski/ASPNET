@@ -13,6 +13,7 @@ namespace EcommerceOsorioManha.DAL
 
         private SingletonContext() { }
 
+        #region GetInstance()
         public static Contexto GetInstance()
         {
             if (contexto == null)
@@ -20,9 +21,7 @@ namespace EcommerceOsorioManha.DAL
                 contexto = new Contexto();
             }
             return contexto;          
-
         }
-
-
+        #endregion
     }
 }

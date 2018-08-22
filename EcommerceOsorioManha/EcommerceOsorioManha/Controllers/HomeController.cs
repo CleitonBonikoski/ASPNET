@@ -36,16 +36,11 @@ namespace EcommerceOsorioManha.Controllers
         public ActionResult AdicionarAoCarrinho(int Id)
         {
             Produto produto = ProdutoDAO.BuscarProdutoPorId(Id);
-            ItemVenda itemVenda = new ItemVenda
-            {
-                Produto = produto,
-                Quantidade = 1,
-                Preco = produto.Preco,
-                Data = DateTime.Now,
-                CarrinhoId = Sessao.RetornarCarrinhoId()
-               
-            };
+
+            ItemVenda itemVenda = ItemVendaDAO.EditaQuantidadeItemVendaNoCarrinho(produto);
+            
             ItemVendaDAO.AdicionarItemVendaAoCarrinho(itemVenda);
+
             return RedirectToAction("CarrinhoCompras","Home");
         }
 
