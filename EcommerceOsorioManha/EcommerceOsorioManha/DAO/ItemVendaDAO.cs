@@ -38,7 +38,7 @@ namespace EcommerceOsorioManha.DAO
                 itemVenda.Quantidade = 1;
             else
             {
-                ItemVendaDAO.RemoverItem(itemCarrinho.ItemVendaId);
+                RemoverItem(itemCarrinho.ItemVendaId);
                 itemVenda.Quantidade = ++itemCarrinho.Quantidade;
             }
 
