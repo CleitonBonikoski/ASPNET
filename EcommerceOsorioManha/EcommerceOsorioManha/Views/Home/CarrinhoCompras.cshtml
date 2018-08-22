@@ -28,7 +28,11 @@
             <img src="~/Imagens/@item.Produto.Imagem" alt="Imagem" style="width:300px" />
         </td>
         <td>
+            <b> @Html.ActionLink("-", "DiminuirItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-warning" })  </b>
+
             @item.Quantidade
+
+            <b> @Html.ActionLink("+", "DiminuirItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-success" })  </b>
         </td>
         <td>
             Nome <b>@item.Produto.Nome</b><br>

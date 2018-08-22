@@ -64,5 +64,14 @@ namespace EcommerceOsorioManha.Controllers
         }
         #endregion
 
+        #region DiminuirItem(int)
+        public ActionResult DiminuirItem(int Id)
+        {            
+            ItemVendaDAO.DiminuirItemAteUm(ItemVendaDAO.RetornarItemVendaPorId(Id));
+
+            return RedirectToAction("CarrinhoCompras", "Home");
+        }
+        #endregion
+
     }
 }

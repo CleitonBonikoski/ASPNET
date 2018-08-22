@@ -51,18 +51,8 @@ namespace EcommerceOsorioManha.DAO
             }
             else
             {
-                if (itemCarrinho.Quantidade > 1)
-                {
-                    --itemCarrinho.Quantidade;
-
-                    contexto.SaveChanges();
-
-                    return null;
-                }
-                else
-                {
+                if(!DiminuirItemAteUm(itemCarrinho))
                     RemoverItem(itemCarrinho.ItemVendaId);
-                }
             }
 
             itemVenda.Produto = produto;
@@ -71,6 +61,28 @@ namespace EcommerceOsorioManha.DAO
             itemVenda.CarrinhoId = sessaoId;
 
             return itemVenda;
+        }
+        #endregion
+
+        #region DiminuirItemAteUm(ItemVenda)
+        internal static bool DiminuirItemAteUm(ItemVenda item)
+        {
+            try
+            {
+                if (item.Quantidade > 1)
+                {
+                    --item.Quantidade;
+
+                    contexto.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return false;
+
         }
         #endregion
 
@@ -94,6 +106,13 @@ namespace EcommerceOsorioManha.DAO
         }
         #endregion
 
+        #region RetornarItemVendaPorId(int)
+        public static ItemVenda RetornarItemVendaPorId(int IdItem)
+        {
+            return contexto.ItensVenda.Find(IdItem);
+        }
+        #endregion
+
         #region BuscarItensVendaPorCarrinhoId(string)
         public static List<ItemVenda> BuscarItensVendaPorCarrinhoId(string carrinhoId)
         {
@@ -110,11 +129,5 @@ namespace EcommerceOsorioManha.DAO
         }
         #endregion
 
-        #region RetornarItemVendaPorId(int)
-        private static ItemVenda RetornarItemVendaPorId(int id)
-        {
-            return contexto.ItensVenda.Find(id);
-        }
-        #endregion
     }
 }
