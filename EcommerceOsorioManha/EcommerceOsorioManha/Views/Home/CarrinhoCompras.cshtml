@@ -11,13 +11,10 @@
             @Html.DisplayNameFor(model => model.Produto.Imagem)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantidade)
+            Quantidade
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Preco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
+            Detalhamento
         </th>
         <th>
             SubTotal
@@ -28,26 +25,24 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <img src="~/Imagens/@item.Produto.Imagem" alt="Imagem" style="width:100px" />
+            <img src="~/Imagens/@item.Produto.Imagem" alt="Imagem" style="width:300px" />
         </td>
         <td>
             @item.Quantidade
         </td>
         <td>
-            @item.Preco.ToString("C2")
-        </td>
-        <td>
-            @item.Data
-        </td>
+            Nome <b>@item.Produto.Nome</b><br>
+            Descrição <b>@item.Produto.Descricao</b> <br>
+            Valor <b> R$@item.Produto.Preco.ToString("C2")</b> <br>
+            Categoria <b>@item.Produto.Categoria.Nome </b><br><br>
         @{
             double subTotal = (item.Quantidade * item.Preco);
         }
         <td>
-            @subTotal
+            @subTotal.ToString("C2")
         </td>
         <td>
-        <td>
-            <b> @Html.ActionLink("Remover", "RemoverItem", "Home", new { id = item.ItemVendaId }, null)  </b>  </td>
+            <b> @Html.ActionLink("Remover", "RemoverItem", "Home", new { IdItem = item.ItemVendaId , produto = item.Produto }, new { @class = "btn btn-warning" })  </b>
         </td>
     </tr>
 }
