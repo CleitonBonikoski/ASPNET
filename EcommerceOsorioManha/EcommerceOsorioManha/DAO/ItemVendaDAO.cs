@@ -46,8 +46,6 @@ namespace EcommerceOsorioManha.DAO
         // Caso adicionar seja false, então remove -1 do carrinho
         public static ItemVenda EditaQuantidadeItemVendaNoCarrinho(Produto produto, bool adicionar)
         {
-            ItemVenda itemVenda = new ItemVenda();
-
             var sessaoId = Sessao.RetornarCarrinhoId();
 
             ItemVenda itemCarrinho = contexto.ItensVenda.FirstOrDefault(_ => _.Produto.ProdutoId == produto.ProdutoId && _.CarrinhoId == sessaoId);
@@ -55,7 +53,14 @@ namespace EcommerceOsorioManha.DAO
             if (adicionar)
             {
                 if (itemCarrinho == null)
-                    itemVenda.Quantidade = 1;
+                {
+                    itemCarrinho = new ItemVenda();
+                    itemCarrinho.Produto = produto;
+                    itemCarrinho.Preco = produto.Preco;
+                    itemCarrinho.Data = DateTime.Now;
+                    itemCarrinho.CarrinhoId = sessaoId;
+                    itemCarrinho.Quantidade = 1;
+                }
                 else
                     AumentarItemNoCarrinho(itemCarrinho);
 
@@ -66,12 +71,9 @@ namespace EcommerceOsorioManha.DAO
                     RemoverItem(itemCarrinho.ItemVendaId);
             }
 
-            itemVenda.Produto = produto;
-            itemVenda.Preco = produto.Preco;
-            itemVenda.Data = DateTime.Now;
-            itemVenda.CarrinhoId = sessaoId;
 
-            return itemVenda;
+
+            return itemCarrinho;
         }
         #endregion
 
