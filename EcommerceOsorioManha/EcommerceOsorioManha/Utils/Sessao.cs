@@ -47,7 +47,10 @@ namespace EcommerceOsorioManha.Utils
                 HttpContext.Current.Session[LOGIN_SESSION] =
                     contexto.logins.Where(_ => _.Nome.Equals(nome) && _.Senha.Equals(senha)).FirstOrDefault();
             }
-            return HttpContext.Current.Session[LOGIN_SESSION].ToString();
+            if (HttpContext.Current.Session[LOGIN_SESSION] != null)
+                return HttpContext.Current.Session[LOGIN_SESSION].ToString();
+
+            return null;
         }
         #endregion
 

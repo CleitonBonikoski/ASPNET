@@ -1,7 +1,35 @@
-﻿
+﻿@model EcommerceOsorioManha.Models.Login
 @{
     ViewBag.Title = "LoginPage";
 }
 
-<h2>LoginPage</h2>
+@using (Html.BeginForm("LoginPage", "Login", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+            <h4 class="card-title">Login</h4>
+        </div>
+        <div class="col-sm-6">
+            Nome : 
+            @Html.TextBoxFor(model => model.Nome,
+            new { @class = "form-control" })
 
+            @Html.ValidationMessageFor(model => model.Nome , null,
+            new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-6">
+            Senha : 
+            @Html.TextBoxFor(model => model.Senha,
+            new { @class = "form-control" })
+            <br><br>
+            @Html.ValidationMessageFor(model => model.Senha , null,
+            new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" value="Logar" class="btn bg-success" />
+        </div>
+    </div>
+}
