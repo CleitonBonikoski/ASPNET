@@ -1,4 +1,6 @@
 ﻿@using EcommerceOsorioManha.Models
+
+@using EcommerceOsorioManha.Utils
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +37,7 @@
             valorTotalNoCarrinho = valorTotalNoCarrinho + (item.Quantidade * item.Preco);
         }
     }
+    string LoginOrLogout = "Logout";
 }
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -44,7 +47,15 @@
 
         @Html.ActionLink(Convert.ToString(@totalItensNoCarrinho) + " Itens ", "CarrinhoCompras", "Home", null, new { @class = "navbar-brand" })
 
-        @Html.ActionLink("Login", "LoginPage", "Login", null, new { @class = "navbar-brand" })
+        @if (Sessao.ValidarSessionLogin() == null)
+        {
+            @Html.ActionLink("Login", "LoginPage", "Login", null, new { @class = "navbar-brand" })
+        }
+        else
+        {
+            @Html.ActionLink(@LoginOrLogout, "LogoutPage", "Login", null, new { @class = "navbar-brand" })
+        }
+
 
     </nav>
     <div id="Content" class="container" style="margin-top:30px">

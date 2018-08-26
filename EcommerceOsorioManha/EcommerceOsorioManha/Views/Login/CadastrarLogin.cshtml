@@ -2,7 +2,7 @@
 @{
 }
 
-@using (Html.BeginForm("LoginPage", "Login", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CadastrarLogin", "Login", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
 {
     <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
         <div class="card-header">
@@ -28,9 +28,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <input type="submit" value="Logar" class="btn btn-success" />
+            <input type="submit" value="Cadastrar" class="btn bg-success" />
         </div>
     </div>
 }
-
-@Html.ActionLink("Cadastrar Login", "CadastrarLogin", "Login", null, new { @class = "btn btn-primary btn-sm" })

@@ -55,5 +55,19 @@ namespace EcommerceOsorioManha.Utils
         }
         #endregion
 
+        #region FinalizarSessao()
+        public static bool FinalizarSessao()
+        {
+            try
+            {
+                HttpContext.Current.Session[LOGIN_SESSION] = null;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
