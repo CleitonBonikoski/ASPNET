@@ -7,13 +7,13 @@ namespace EcommerceOsorioManha.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UPTableItemVenda : IMigrationMetadata
+    public sealed partial class CriandoDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UPTableItemVenda));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CriandoDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808171314297_UPTableItemVenda"; }
+            get { return "201808261709032_CriandoDB"; }
         }
         
         string IMigrationMetadata.Source

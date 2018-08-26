@@ -37,7 +37,7 @@
         <tr class="table-light">
             <td><b> @produtorodutoCadastrado.Nome</b></td>
             <td><b> @produtorodutoCadastrado.Descricao</b></td>
-            <td><b> @produtorodutoCadastrado.Preco</b></td>
+            <td><b> @produtorodutoCadastrado.Preco.ToString("C2")</b></td>
             <td><b> @produtorodutoCadastrado.Categoria.Nome</b></td>
             <td> <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"   </td>
             <td><b> @Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)  </b>  </td>

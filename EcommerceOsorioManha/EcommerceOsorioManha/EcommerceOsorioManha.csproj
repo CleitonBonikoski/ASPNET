@@ -142,17 +142,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808171250021_CriarBanco.cs" />
-    <Compile Include="Migrations\201808171250021_CriarBanco.Designer.cs">
-      <DependentUpon>201808171250021_CriarBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808171314297_UPTableItemVenda.cs" />
-    <Compile Include="Migrations\201808171314297_UPTableItemVenda.Designer.cs">
-      <DependentUpon>201808171314297_UPTableItemVenda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808211131371_CarrinhoDeCompra.cs" />
-    <Compile Include="Migrations\201808211131371_CarrinhoDeCompra.Designer.cs">
-      <DependentUpon>201808211131371_CarrinhoDeCompra.cs</DependentUpon>
+    <Compile Include="Migrations\201808261709032_CriandoDB.cs" />
+    <Compile Include="Migrations\201808261709032_CriandoDB.Designer.cs">
+      <DependentUpon>201808261709032_CriandoDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -192,14 +184,8 @@
     <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808171250021_CriarBanco.resx">
-      <DependentUpon>201808171250021_CriarBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808171314297_UPTableItemVenda.resx">
-      <DependentUpon>201808171314297_UPTableItemVenda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808211131371_CarrinhoDeCompra.resx">
-      <DependentUpon>201808211131371_CarrinhoDeCompra.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808261709032_CriandoDB.resx">
+      <DependentUpon>201808261709032_CriandoDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
