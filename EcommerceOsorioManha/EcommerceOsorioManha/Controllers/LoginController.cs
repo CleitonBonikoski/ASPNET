@@ -13,10 +13,9 @@ namespace EcommerceOsorioManha.Controllers
         public ActionResult LoginPage(string nome, string senha)
         {
             if (Sessao.RetornarValidacaoLogin(nome,senha) != null)
-                return RedirectToAction("IndexProduto", "Produto");
+                return RedirectToAction("Index", "Home");
                 
             return View();
-
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿@model EcommerceOsorioManha.Models.Login
 @{
-    ViewBag.Title = "LoginPage";
 }
 
 @using (Html.BeginForm("LoginPage", "Login", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
@@ -10,7 +9,7 @@
             <h4 class="card-title">Login</h4>
         </div>
         <div class="col-sm-6">
-            Nome : 
+            Nome  
             @Html.TextBoxFor(model => model.Nome,
             new { @class = "form-control" })
 
@@ -18,8 +17,8 @@
             new { @class = "text-danger" })
         </div>
         <div class="col-sm-6">
-            Senha : 
-            @Html.TextBoxFor(model => model.Senha,
+            Senha  
+            @Html.PasswordFor(model => model.Senha,
             new { @class = "form-control" })
             <br><br>
             @Html.ValidationMessageFor(model => model.Senha , null,
