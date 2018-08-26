@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace EcommerceOsorioManha.Utils
 {
@@ -29,8 +30,8 @@ namespace EcommerceOsorioManha.Utils
         }
         #endregion
 
-        #region RetornarSessionLogin()
-        public static string RetornarSessionLogin()
+        #region ValidarSessionLogin()
+        public static string ValidarSessionLogin()
         {
             if (HttpContext.Current.Session[LOGIN_SESSION] == null)
                 return null;

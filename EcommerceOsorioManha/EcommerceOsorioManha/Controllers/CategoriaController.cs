@@ -1,5 +1,6 @@
 ﻿using EcommerceOsorioManha.DAL;
 using EcommerceOsorioManha.Models;
+using EcommerceOsorioManha.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,6 +15,9 @@ namespace EcommerceOsorioManha.Controllers
         #region IndexCategoria
         public ActionResult IndexCategoria()
         {
+            if (Sessao.ValidarSessionLogin() == null)
+                return RedirectToAction("LoginPage", "Login");
+                
             ViewBag.Data = DateTime.Now;
             return View(CategoriaDAO.RetornarCategorias());
         }
