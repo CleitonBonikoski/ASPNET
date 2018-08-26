@@ -3,7 +3,7 @@ namespace EcommerceOsorioManha.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CriandoDB : DbMigration
+    public partial class MakeDB : DbMigration
     {
         public override void Up()
         {

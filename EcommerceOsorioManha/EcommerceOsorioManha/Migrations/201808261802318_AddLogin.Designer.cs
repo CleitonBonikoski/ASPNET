@@ -7,13 +7,13 @@ namespace EcommerceOsorioManha.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CriandoDB : IMigrationMetadata
+    public sealed partial class AddLogin : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CriandoDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddLogin));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808261709032_CriandoDB"; }
+            get { return "201808261802318_AddLogin"; }
         }
         
         string IMigrationMetadata.Source

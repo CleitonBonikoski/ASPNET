@@ -134,6 +134,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\ItemVendaDAO.cs" />
@@ -142,14 +143,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808261709032_CriandoDB.cs" />
-    <Compile Include="Migrations\201808261709032_CriandoDB.Designer.cs">
-      <DependentUpon>201808261709032_CriandoDB.cs</DependentUpon>
+    <Compile Include="Migrations\201808261743337_MakeDB.cs" />
+    <Compile Include="Migrations\201808261743337_MakeDB.Designer.cs">
+      <DependentUpon>201808261743337_MakeDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808261802318_AddLogin.cs" />
+    <Compile Include="Migrations\201808261802318_AddLogin.Designer.cs">
+      <DependentUpon>201808261802318_AddLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\ItemVenda.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Sessao.cs" />
@@ -172,6 +178,7 @@
     <Content Include="Views\Categoria\RemoverCategoria.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CarrinhoCompras.cshtml" />
+    <Content Include="Views\Login\LoginPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -184,8 +191,11 @@
     <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808261709032_CriandoDB.resx">
-      <DependentUpon>201808261709032_CriandoDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808261743337_MakeDB.resx">
+      <DependentUpon>201808261743337_MakeDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808261802318_AddLogin.resx">
+      <DependentUpon>201808261802318_AddLogin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

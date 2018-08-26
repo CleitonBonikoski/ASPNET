@@ -13,5 +13,7 @@ namespace EcommerceOsorioManha.Models
         public DbSet<Categoria> Categorias { get; set; }
 
         public DbSet<ItemVenda> ItensVenda { get; set; }
+
+        public DbSet<Login> logins { get; set; }
     }
 }
