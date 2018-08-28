@@ -41,6 +41,27 @@ namespace EcommerceOsorioManha.DAO
         }
         #endregion
 
+
+        public static void AlterarStatusCompra(Cliente cliente)
+        {
+            ItemVenda itemVenda = contexto.ItensVenda.Where(_ => _.CarrinhoId.Equals(cliente.CarrinhoId)).FirstOrDefault();
+
+            if (itemVenda != null)
+            {
+                itemVenda.Comprado = true;
+                try
+                {
+                    contexto.Entry(itemVenda).State = EntityState.Modified;
+                    contexto.SaveChanges();
+                }
+                catch (Exception)
+                {
+                }
+            }
+                
+        }
+
+
         #region EditaQuantidadeItemVendaNoCarrinho(Produto)
         // Caso adicionar seja true, então adiciona +1 ao carrinho
         // Caso adicionar seja false, então remove -1 do carrinho
@@ -130,7 +151,7 @@ namespace EcommerceOsorioManha.DAO
         public static List<ItemVenda> BuscarItensVendaPorCarrinhoId(string carrinhoId)
         {
             return contexto.ItensVenda.Include("Produto").
-                Where(_ => _.CarrinhoId.Equals(carrinhoId)).ToList();
+                Where(_ => _.CarrinhoId.Equals(carrinhoId) && _.Comprado == false).ToList();
         }
         #endregion
 

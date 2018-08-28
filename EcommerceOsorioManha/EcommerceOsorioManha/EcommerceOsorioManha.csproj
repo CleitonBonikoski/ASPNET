@@ -133,10 +133,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\ComprarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
+    <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ItemVendaDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
@@ -152,8 +154,21 @@
     <Compile Include="Migrations\201808261802318_AddLogin.Designer.cs">
       <DependentUpon>201808261802318_AddLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808281131392_AddCliente.cs" />
+    <Compile Include="Migrations\201808281131392_AddCliente.Designer.cs">
+      <DependentUpon>201808281131392_AddCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808281220564_AddRequiredCliente.cs" />
+    <Compile Include="Migrations\201808281220564_AddRequiredCliente.Designer.cs">
+      <DependentUpon>201808281220564_AddRequiredCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808281250317_CompradoEmItemVenda.cs" />
+    <Compile Include="Migrations\201808281250317_CompradoEmItemVenda.Designer.cs">
+      <DependentUpon>201808281250317_CompradoEmItemVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\ItemVenda.cs" />
     <Compile Include="Models\Login.cs" />
@@ -181,6 +196,7 @@
     <Content Include="Views\Home\CarrinhoCompras.cshtml" />
     <Content Include="Views\Login\LoginPage.cshtml" />
     <Content Include="Views\Login\CadastrarLogin.cshtml" />
+    <Content Include="Views\Comprar\FinalizarCompra.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -198,6 +214,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808261802318_AddLogin.resx">
       <DependentUpon>201808261802318_AddLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808281131392_AddCliente.resx">
+      <DependentUpon>201808281131392_AddCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808281220564_AddRequiredCliente.resx">
+      <DependentUpon>201808281220564_AddRequiredCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808281250317_CompradoEmItemVenda.resx">
+      <DependentUpon>201808281250317_CompradoEmItemVenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

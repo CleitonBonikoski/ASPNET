@@ -1,4 +1,5 @@
 ﻿using EcommerceOsorioManha.DAL;
+using EcommerceOsorioManha.DAO;
 using EcommerceOsorioManha.Models;
 using EcommerceOsorioManha.Utils;
 using System;
@@ -13,6 +14,8 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class ProdutoController : Controller
     {
+        string sessaoAtual = Sessao.RetornarCarrinhoId();
+
         private static Contexto contexto = SingletonContext.GetInstance();
 
         #region IndexProduto
@@ -22,6 +25,8 @@ namespace EcommerceOsorioManha.Controllers
                 return RedirectToAction("LoginPage", "Login");
 
             ViewBag.Data = DateTime.Now;
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
+
             return View(ProdutoDAO.RetornarProdutos());
         }
         #endregion

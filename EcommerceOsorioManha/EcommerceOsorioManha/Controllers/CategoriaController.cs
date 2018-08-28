@@ -1,4 +1,5 @@
 ﻿using EcommerceOsorioManha.DAL;
+using EcommerceOsorioManha.DAO;
 using EcommerceOsorioManha.Models;
 using EcommerceOsorioManha.Utils;
 using System;
@@ -15,10 +16,14 @@ namespace EcommerceOsorioManha.Controllers
         #region IndexCategoria
         public ActionResult IndexCategoria()
         {
+            string sessaoAtual = Sessao.RetornarCarrinhoId();
+
             if (Sessao.ValidarSessionLogin() == null)
                 return RedirectToAction("LoginPage", "Login");
                 
             ViewBag.Data = DateTime.Now;
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
+
             return View(CategoriaDAO.RetornarCategorias());
         }
         #endregion

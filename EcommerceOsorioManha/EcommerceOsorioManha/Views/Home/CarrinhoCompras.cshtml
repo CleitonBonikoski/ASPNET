@@ -22,33 +22,37 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <img src="~/Imagens/@item.Produto.Imagem" alt="Imagem" style="width:300px" />
-        </td>
-        <td>
-            <b> @Html.ActionLink("-", "DiminuirItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-warning" })  </b>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Imagens/@item.Produto.Imagem" alt="Imagem" style="width:300px" />
+            </td>
+            <td>
+                <b> @Html.ActionLink("-", "DiminuirItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-warning" })  </b>
 
-            @item.Quantidade
+                @item.Quantidade
 
-            <b> @Html.ActionLink("+", "AumentarItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-success" })  </b>
-        </td>
-        <td>
-            Nome <b>@item.Produto.Nome</b><br>
-            Descrição <b>@item.Produto.Descricao</b> <br>
-            Valor <b> R$@item.Produto.Preco.ToString("C2")</b> <br>
-            Categoria <b>@item.Produto.Categoria.Nome </b><br><br>
-        @{
-            double subTotal = (item.Quantidade * item.Preco);
-        }
-        <td>
-            @subTotal.ToString("C2")
-        </td>
-        <td>
-            <b> @Html.ActionLink("Remover", "RemoverItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-warning" })  </b>
-        </td>
-    </tr>
-}
+                <b> @Html.ActionLink("+", "AumentarItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-success" })  </b>
+            </td>
+            <td>
+                Nome <b>@item.Produto.Nome</b><br>
+                Descrição <b>@item.Produto.Descricao</b> <br>
+                Valor <b> R$@item.Produto.Preco.ToString("C2")</b> <br>
+                Categoria <b>@item.Produto.Categoria.Nome </b><br><br>
+                @{
+                    double subTotal = (item.Quantidade * item.Preco);
+                }
+            <td>
+                @subTotal.ToString("C2")
+            </td>
+            <td>
+                <b> @Html.ActionLink("Remover", "RemoverItem", "Home", new { Id = item.ItemVendaId }, new { @class = "btn btn-warning" })  </b>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<b> @Html.ActionLink("Finalizar Compra", "FinalizarCompra", "Comprar", new {  }, new { @class = "btn btn-warning" })  </b>
+

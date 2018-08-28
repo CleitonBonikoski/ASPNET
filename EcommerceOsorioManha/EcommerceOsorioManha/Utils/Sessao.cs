@@ -21,7 +21,12 @@ namespace EcommerceOsorioManha.Utils
         #region  RetornarCarrinhoId()
         public static string RetornarCarrinhoId()
         {
-            if (HttpContext.Current.Session[NOME_SESSION] == null)
+            string carrinhoId = ValidarSessionLogin();
+
+            ItemVenda item = contexto.ItensVenda.Include("Produto").
+                Where(_ => _.CarrinhoId.Equals(carrinhoId) && _.Comprado == true).FirstOrDefault();
+
+            if (HttpContext.Current.Session[NOME_SESSION] == null || item != null)
             {
                 Guid guid = Guid.NewGuid();
                 HttpContext.Current.Session[NOME_SESSION] = guid;

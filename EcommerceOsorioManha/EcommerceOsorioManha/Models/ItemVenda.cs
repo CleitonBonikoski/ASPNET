@@ -22,5 +22,7 @@ namespace EcommerceOsorioManha.Models
         public DateTime Data { get; set; }
 
         public string CarrinhoId { get; set; }
+
+        public bool Comprado { get; set; }
     }
 }

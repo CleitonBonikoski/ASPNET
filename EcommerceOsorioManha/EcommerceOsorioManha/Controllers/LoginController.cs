@@ -14,6 +14,10 @@ namespace EcommerceOsorioManha.Controllers
         // GET: Login
         public ActionResult LoginPage(string nome, string senha)
         {
+            string sessaoAtual = Sessao.RetornarCarrinhoId();
+
+            ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
+
             if (Sessao.RetornarValidacaoLogin(nome, senha) != null)
                 return RedirectToAction("Index", "Home");
 
