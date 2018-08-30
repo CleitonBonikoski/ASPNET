@@ -41,26 +41,28 @@ namespace EcommerceOsorioManha.DAO
         }
         #endregion
 
-
+        #region AlterarStatusCompra(Cliente)
         public static void AlterarStatusCompra(Cliente cliente)
         {
-            ItemVenda itemVenda = contexto.ItensVenda.Where(_ => _.CarrinhoId.Equals(cliente.CarrinhoId)).FirstOrDefault();
+            List<ItemVenda> lstItensVenda = contexto.ItensVenda.Where(_ => _.CarrinhoId.Equals(cliente.CarrinhoId)).ToList();
 
-            if (itemVenda != null)
+            if (lstItensVenda != null)
             {
-                itemVenda.Comprado = true;
-                try
+                foreach (ItemVenda itemVenda in lstItensVenda)
                 {
-                    contexto.Entry(itemVenda).State = EntityState.Modified;
-                    contexto.SaveChanges();
-                }
-                catch (Exception)
-                {
-                }
-            }
-                
+                    itemVenda.Comprado = true;
+                    try
+                    {
+                        contexto.Entry(itemVenda).State = EntityState.Modified;
+                        contexto.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }                
+            }                
         }
-
+        #endregion
 
         #region EditaQuantidadeItemVendaNoCarrinho(Produto)
         // Caso adicionar seja true, então adiciona +1 ao carrinho
@@ -91,8 +93,6 @@ namespace EcommerceOsorioManha.DAO
                 if (!DiminuirItemAteUm(itemCarrinho))
                     RemoverItem(itemCarrinho.ItemVendaId);
             }
-
-
 
             return itemCarrinho;
         }
@@ -151,7 +151,7 @@ namespace EcommerceOsorioManha.DAO
         public static List<ItemVenda> BuscarItensVendaPorCarrinhoId(string carrinhoId)
         {
             return contexto.ItensVenda.Include("Produto").
-                Where(_ => _.CarrinhoId.Equals(carrinhoId) && _.Comprado == false).ToList();
+                Where(_ => _.CarrinhoId.Equals(carrinhoId)).ToList();
         }
         #endregion
 

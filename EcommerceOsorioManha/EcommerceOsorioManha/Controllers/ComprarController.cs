@@ -35,15 +35,17 @@ namespace EcommerceOsorioManha.Controllers
         [HttpPost]
         public ActionResult FinalizarCompra(Cliente cliente)
         {
-       
+
             string sessaoAtual = Sessao.RetornarCarrinhoId();
 
             if (ClienteDAO.CadastrarCompraCliente(cliente))
             {
                 ItemVendaDAO.AlterarStatusCompra(cliente);
 
+                Sessao.FinalizarSessaoCarrinhoId();
+
                 sessaoAtual = Sessao.RetornarCarrinhoId();
-                
+
                 ViewBag.QuantidadeNoCarrinho = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(sessaoAtual);
 
                 ViewBag.lstItensVenda = ItemVendaDAO.BuscarItensVendaPorCarrinhoId(Sessao.RetornarCarrinhoId());

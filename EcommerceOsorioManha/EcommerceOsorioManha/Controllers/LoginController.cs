@@ -46,7 +46,7 @@ namespace EcommerceOsorioManha.Controllers
 
         public ActionResult LogoutPage()
         {
-            Sessao.FinalizarSessao();
+            Sessao.FinalizarSessaoLogin();
             return RedirectToAction("LoginPage", "Login");
         }
 

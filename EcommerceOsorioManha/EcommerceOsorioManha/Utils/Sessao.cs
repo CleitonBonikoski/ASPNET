@@ -21,12 +21,7 @@ namespace EcommerceOsorioManha.Utils
         #region  RetornarCarrinhoId()
         public static string RetornarCarrinhoId()
         {
-            string carrinhoId = ValidarSessionLogin();
-
-            ItemVenda item = contexto.ItensVenda.Include("Produto").
-                Where(_ => _.CarrinhoId.Equals(carrinhoId) && _.Comprado == true).FirstOrDefault();
-
-            if (HttpContext.Current.Session[NOME_SESSION] == null || item != null)
+            if (HttpContext.Current.Session[NOME_SESSION] == null)
             {
                 Guid guid = Guid.NewGuid();
                 HttpContext.Current.Session[NOME_SESSION] = guid;
@@ -60,12 +55,27 @@ namespace EcommerceOsorioManha.Utils
         }
         #endregion
 
-        #region FinalizarSessao()
-        public static bool FinalizarSessao()
+        #region FinalizarSessaoLogin()
+        public static bool FinalizarSessaoLogin()
         {
             try
             {
                 HttpContext.Current.Session[LOGIN_SESSION] = null;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region FinalizarSessaoCarrinhoId()
+        public static bool FinalizarSessaoCarrinhoId()
+        {
+            try
+            {
+                HttpContext.Current.Session[NOME_SESSION] = null;
                 return true;
             }
             catch (Exception)
