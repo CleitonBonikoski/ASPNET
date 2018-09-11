@@ -5,7 +5,6 @@
 
 @{
 	List<ItemVenda> lstItensVenda = ViewBag.lstItensVenda;
-
 	double somaCompra = 0.00;
 }
 
@@ -44,13 +43,8 @@
 <h2>Total da Compra : @somaCompra.ToString("C2")</h2>
 <br>
 <br>
-<div>
+<hr />
 
-	<h2> Buscar CEP </h2>
-
-
-
-</div>
 <div>
 
 	@using (Html.BeginForm("FinalizarCompra", "Comprar", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
@@ -76,9 +70,62 @@
 					new { @class = "form-control", @placeholder = "Telefone" })
 				</div>
 				<br>
+				@Html.LabelFor(model => model.Cep, new { @class = "control-label col-sm-2" })
+				<div class="col-sm-6">
+					@Html.TextBoxFor(model => model.Cep,
+					 new { @class = "form-control", @placeholder = "CEP" })
+
+					@Html.ValidationMessageFor(model => model.Cep, null,
+					 new { @class = "text-danger" })
+				</div>
+				<br />
+
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" value="Comprar" class="btn btn-primary" />
+						<input type="submit" value="Consultar" class="btn btn-primary" formaction="PesquisarCEP" formmethod="post" />
+					</div>
+				</div>
+				
+				<br />
+				@Html.LabelFor(model => model.Logradouro, new { @class = "control-label col-sm-2" })
+				<div class="col-sm-6">
+					@Html.TextBoxFor(model => model.Logradouro,
+					 new { @class = "form-control", @placeholder = "Endereço", @readonly = "" })
+
+					@Html.ValidationMessageFor(model => model.Logradouro, null,
+					 new { @class = "text-danger" })
+				</div>
+				<br>
+				@Html.LabelFor(model => model.Bairro, new { @class = "control-label col-sm-2" })
+				<div class="col-sm-6">
+					@Html.TextBoxFor(model => model.Bairro,
+					 new { @class = "form-control", @placeholder = "Bairro", @readonly = "" })
+
+					@Html.ValidationMessageFor(model => model.Bairro, null,
+					 new { @class = "text-danger" })
+				</div>
+				<br>
+				@Html.LabelFor(model => model.Localidade, new { @class = "control-label col-sm-2" })
+				<div class="col-sm-6">
+					@Html.TextBoxFor(model => model.Localidade,
+					 new { @class = "form-control", @placeholder = "Cidade", @readonly = "" })
+
+					@Html.ValidationMessageFor(model => model.Localidade, null,
+					 new { @class = "text-danger" })
+				</div>
+				<br>
+				@Html.LabelFor(model => model.Uf, new { @class = "control-label col-sm-2" })
+				<div class="col-sm-6">
+					@Html.TextBoxFor(model => model.Uf,
+					 new { @class = "form-control", @placeholder = "Estado", @readonly = "" })
+
+					@Html.ValidationMessageFor(model => model.Uf, null,
+					 new { @class = "text-danger" })
+				</div>
+				<br>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" value="Comprar" class="btn btn-primary"/>
 					</div>
 				</div>
 			</div>

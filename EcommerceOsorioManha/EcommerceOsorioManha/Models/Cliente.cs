@@ -23,19 +23,19 @@ namespace EcommerceOsorioManha.Models
 
         public string CarrinhoId { get; set; }
 
-		[Display(Name = "Cep")]
+		[Display(Name = "Cep do Cliente")]
 		public string Cep { get; set; }
 
-		[Display(Name = "Endereço")]
+		[Display(Name = "Endereço do Cliente")]
 		public string Logradouro { get; set; }
 
-		[Display(Name = "Bairro")]
+		[Display(Name = "Bairro do Cliente")]
 		public string Bairro { get; set; }
 
-		[Display(Name = "Cidade")]
+		[Display(Name = "Cidade do Cliente")]
 		public string Localidade { get; set; }
 
-		[Display(Name = "Estado")]
+		[Display(Name = "Estado do Cliente")]
 		public string Uf { get; set; }
 
 	}
