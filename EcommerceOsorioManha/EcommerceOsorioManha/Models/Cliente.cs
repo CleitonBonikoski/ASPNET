@@ -18,14 +18,25 @@ namespace EcommerceOsorioManha.Models
         public string NomeCliente { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
-        [Display(Name = "Endereço do Cliente")]
-        public string EnderecoCliente { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório!")]
         [Display(Name = "Telefone do Cliente")]
         public string TelefoneCliente { get; set; }
 
         public string CarrinhoId { get; set; }
 
-    }
+		[Display(Name = "Cep")]
+		public string Cep { get; set; }
+
+		[Display(Name = "Endereço")]
+		public string Logradouro { get; set; }
+
+		[Display(Name = "Bairro")]
+		public string Bairro { get; set; }
+
+		[Display(Name = "Cidade")]
+		public string Localidade { get; set; }
+
+		[Display(Name = "Estado")]
+		public string Uf { get; set; }
+
+	}
 }

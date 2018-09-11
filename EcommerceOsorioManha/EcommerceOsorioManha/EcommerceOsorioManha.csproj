@@ -166,6 +166,14 @@
     <Compile Include="Migrations\201808281250317_CompradoEmItemVenda.Designer.cs">
       <DependentUpon>201808281250317_CompradoEmItemVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809111219344_WS_CEP.cs" />
+    <Compile Include="Migrations\201809111219344_WS_CEP.Designer.cs">
+      <DependentUpon>201809111219344_WS_CEP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809111223597_WS_CEP1.cs" />
+    <Compile Include="Migrations\201809111223597_WS_CEP1.Designer.cs">
+      <DependentUpon>201809111223597_WS_CEP1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -223,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808281250317_CompradoEmItemVenda.resx">
       <DependentUpon>201808281250317_CompradoEmItemVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809111219344_WS_CEP.resx">
+      <DependentUpon>201809111219344_WS_CEP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809111223597_WS_CEP1.resx">
+      <DependentUpon>201809111223597_WS_CEP1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
