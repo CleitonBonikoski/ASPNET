@@ -4,90 +4,85 @@
 
 
 @{
-    List<ItemVenda> lstItensVenda = ViewBag.lstItensVenda;
+	List<ItemVenda> lstItensVenda = ViewBag.lstItensVenda;
 
-    double somaCompra = 0.00;
+	double somaCompra = 0.00;
 }
 
 <h2>Finalizar Compra</h2>
 <table class="table">
-    <tr>
-        <th>
-            Resumo Da Compra
-        </th>
+	<tr>
+		<th>
+			Resumo Da Compra
+		</th>
 
-        <th></th>
-    </tr>
+		<th></th>
+	</tr>
 
-    @foreach (var item in lstItensVenda)
-    {
-        <tr>
-            <td>
-                Nome <b>@item.Produto.Nome</b><br>
-                Descrição <b>@item.Produto.Descricao</b> <br>
-                Valor <b> @item.Produto.Preco.ToString("C2")</b>  X @item.Quantidade
-                <br>
-                Categoria <b>@item.Produto.Categoria.Nome </b><br><br>
-                @{
-                    double subTotal = (item.Quantidade * item.Preco);
-                }
-                <b>Subtotal</b> @subTotal.ToString("C2")
-                @{
-                    somaCompra += subTotal;
-                }
-            </td>
-        </tr>
-    }
+	@foreach (var item in lstItensVenda)
+	{
+		<tr>
+			<td>
+				Nome <b>@item.Produto.Nome</b><br>
+				Descrição <b>@item.Produto.Descricao</b> <br>
+				Valor <b> @item.Produto.Preco.ToString("C2")</b>  X @item.Quantidade
+				<br>
+				Categoria <b>@item.Produto.Categoria.Nome </b><br><br>
+				@{
+					double subTotal = (item.Quantidade * item.Preco);
+				}
+				<b>Subtotal</b> @subTotal.ToString("C2")
+				@{
+					somaCompra += subTotal;
+				}
+			</td>
+		</tr>
+	}
 </table>
 <br>
 <br>
 <h2>Total da Compra : @somaCompra.ToString("C2")</h2>
 <br>
 <br>
-
 <div>
 
-    @using (Html.BeginForm("FinalizarCompra", "Comprar", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
-    {
-        @Html.HiddenFor(model => model.CarrinhoId)
+	<h2> Buscar CEP </h2>
 
-        <legend>Dados Pessoais</legend>
-        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.NomeCliente, new { @class = "control-label col-sm-2" })
-            <div class="col-sm-6">
-                @Html.TextBoxFor(model => model.NomeCliente,
-                new { @class = "form-control", @placeholder = "Nome" })
 
-                @Html.ValidationMessageFor(model => model.NomeCliente, null,
-                new { @class = "text-danger" })
-            </div>
-            <br>
-            <div class="form-group">
-                @Html.LabelFor(model => model.EnderecoCliente, new { @class = "control-label col-sm-2" })
-                <div class="col-sm-6">
-                    @Html.TextBoxFor(model => model.EnderecoCliente,
-                    new { @class = "form-control", @placeholder = "Endereço" })
-
-                    @Html.ValidationMessageFor(model => model.EnderecoCliente, null,
-                    new { @class = "text-danger" })
-                </div>
-                <br>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TelefoneCliente, new { @class = "control-label col-sm-2" })
-                    <div class="col-sm-6">
-                        @Html.TextBoxFor(model => model.TelefoneCliente,
-                        new { @class = "form-control", @placeholder = "Telefone" })
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" value="Comprar" class="btn btn-primary" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
 
 </div>
+<div>
+
+	@using (Html.BeginForm("FinalizarCompra", "Comprar", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+	{
+		@Html.HiddenFor(model => model.CarrinhoId)
+
+		<legend>Dados Pessoais</legend>
+		@Html.ValidationSummary(true, null, new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.NomeCliente, new { @class = "control-label col-sm-2" })
+			<div class="col-sm-6">
+				@Html.TextBoxFor(model => model.NomeCliente,
+				new { @class = "form-control", @placeholder = "Nome" })
+
+				@Html.ValidationMessageFor(model => model.NomeCliente, null,
+				new { @class = "text-danger" })
+			</div>
+			<br>
+			<div class="form-group">
+				@Html.LabelFor(model => model.TelefoneCliente, new { @class = "control-label col-sm-2" })
+				<div class="col-sm-6">
+					@Html.TextBoxFor(model => model.TelefoneCliente,
+					new { @class = "form-control", @placeholder = "Telefone" })
+				</div>
+				<br>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" value="Comprar" class="btn btn-primary" />
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+
